@@ -34,13 +34,6 @@ The site compares that with today's average price, and with a stricter benchmark
 5. If more than 10% of items fail, or the BLS request errors, the update stops and keeps the previous data.
 6. Any national price that moves 30% or more since the last update is flagged in the report (`jumpWarnPct`).
 
-## One-time setup
-
-1. **BLS key:** register for free at https://data.bls.gov/registrationEngine/ and activate the key from the email.
-2. **Store the key:** in this repository, go to **Settings → Secrets and variables → Actions → New repository secret**. Name it `BLS_API_KEY` and paste the key.
-3. **Turn on the website:** go to **Settings → Pages**. Under *Build and deployment*, choose **Deploy from a branch**, branch **main**, folder **/docs**, then **Save**. The site appears at `https://<your-username>.github.io/the-peoples-price/` within a few minutes.
-4. **Run the first update:** go to **Actions → Weekly price check → Run workflow**. When it finishes, the summary shows the data report.
-
 ## Everyday tasks
 
 - **Update now:** Actions → Weekly price check → Run workflow.
