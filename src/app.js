@@ -150,6 +150,11 @@ function start(D){
     if(pv&&!(v>0))lines+='<p class="you">Enter the price as a number, for example 3.49.</p>';
     else if(v>0){var y=(v/c.pp-1)*100,z=(v/c.cur-1)*100;
       lines+='<p class="you '+(y>2?'over':(y<-2?'under':''))+'">You paid <b>'+money(v)+'</b>: <b>'+Math.abs(y).toFixed(0)+'% '+(y>=0?'above':'below')+'</b> the People’s Price and '+Math.abs(z).toFixed(0)+'% '+(z>=0?'above':'below')+' the current average.</p>'}
+    var shareTxt=esc(it.name)+(dir==='about the same'?' costs about the same as':(verb+' '+Math.abs(g).toFixed(0)+'% '+dir+' than'))+' the People’s Price';
+    lines+='<div class="share" data-id="'+it.id+'" data-text="'+shareTxt+'"><span>Share:</span>'+
+      (navigator.share?'<button type="button" data-share="native"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Share</button>':'')+
+      '<button type="button" data-share="copy"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>Copy link</button>'+
+      '<a data-share="x" target="_blank" rel="noopener">X</a><a data-share="fb" target="_blank" rel="noopener">Facebook</a><span class="ok" hidden>Link copied</span></div>';
     var also=hits.slice(1,5);
     if(also.length)lines+='<p class="also">Also matching: '+also.map(function(h){return '<button type="button" class="qchip" data-q="'+esc(h.name)+'">'+esc(h.name)+'</button>'}).join(' ')+'</p>';
     var bars=[['b19',it.kind==='index'?'2019 spending':'2019 average',c.base],['b2','At +2% a year',c.p2],['bpp','People’s Price',c.pp],['bnow '+(g>2?'over':(g<-2?'under':'none')),'Average now',c.cur]];
@@ -157,9 +162,20 @@ function start(D){
     var bm=Math.max.apply(null,bars.map(function(x){return x[2]}));
     var ladder='<div class="ladder" role="img" aria-label="'+esc(it.name)+' prices: '+bars.map(function(x){return x[1]+' '+money(x[2])}).join(', ')+'">'+bars.map(function(x){return '<div class="lr '+x[0]+'"><span>'+x[1]+'</span><div class="tr"><i style="width:'+(x[2]/bm*100).toFixed(1)+'%"></i></div><b>'+money(x[2])+'</b></div>'}).join('')+'</div>';
     box.innerHTML='<div class="ans-card">'+card(o,reg)+'</div><div class="ans-text"><h2>'+head+'</h2>'+ladder+lines+'</div>';
-    renderFacts(sel.value,reg);document.getElementById('facts').hidden=false;[].forEach.call(document.querySelectorAll('.home-feat'),function(s){s.hidden=false});
+    renderFacts(sel.value,reg);document.getElementById('facts').hidden=false;
+    var sh=box.querySelector('.share');if(sh){var u=shareUrl(it.id),t=sh.getAttribute('data-text')+'. What should it cost?';
+      sh.querySelector('[data-share=x]').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u);
+      sh.querySelector('[data-share=fb]').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u)}
+    if(window.gtag)window.gtag('event','search',{search_term:it.name,state:sel.value||'US'});[].forEach.call(document.querySelectorAll('.home-feat'),function(s){s.hidden=false});
     lastQ=qv;
   }
+  var SITE='https://thepeoplesprice.org/';
+  function shareUrl(id){var st=sel.value;return SITE+'?item='+encodeURIComponent(id)+(st?'&state='+st:'')}
+  document.getElementById('answer').addEventListener('click',function(e){var b=e.target.closest('[data-share]');if(!b)return;var sh=b.closest('.share'),id=sh.getAttribute('data-id'),u=shareUrl(id),t=sh.getAttribute('data-text')+'. What should it cost?';var k=b.getAttribute('data-share');
+    if(window.gtag)window.gtag('event','share',{method:k,item_id:id});
+    if(k==='native'){navigator.share({title:'The People’s Price',text:t,url:u}).catch(function(){})}
+    else if(k==='copy'){var ok=sh.querySelector('.ok');var done=function(){ok.hidden=false;setTimeout(function(){ok.hidden=true},2500)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){ok.textContent=u;ok.hidden=false})}else{ok.textContent=u;ok.hidden=false}}});
   document.getElementById('q').addEventListener('submit',function(e){e.preventDefault();answer()});
   document.getElementById('app').addEventListener('click',function(e){var b=e.target.closest('.qchip,.qchip-gl');if(!b)return;document.getElementById('q-item').value=b.getAttribute('data-q');answer();if(b.classList.contains('qchip-gl')){if(location.hash==='#all')location.hash='#check';setTimeout(function(){document.getElementById('answer').scrollIntoView({behavior:'smooth',block:'start'})},30)}});
   document.getElementById('showall').addEventListener('click',function(){SHOWALL=!SHOWALL;render();if(!SHOWALL)document.getElementById('all-h').scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('showall').focus({preventScroll:true})});
@@ -171,6 +187,10 @@ function start(D){
   function route(){var all=location.hash==='#all';document.getElementById('view-all').hidden=!all;document.getElementById('view-check').hidden=all;
     document.getElementById('tab-all').setAttribute('aria-current',all?'page':'false');document.getElementById('tab-check').setAttribute('aria-current',all?'false':'page');window.scrollTo(0,0)}
   window.addEventListener('hashchange',route);route();
+  var fu=document.getElementById('foot-updated');if(fu)fu.textContent='Prices through '+mlab(D.asof)+(D.updated?' · checked '+D.updated:'');
+  try{var qs=new URLSearchParams(location.search),qi=qs.get('item'),qst=(qs.get('state')||'').toUpperCase();
+    if(qst&&NAMES[qst]){sel.value=qst;sel2.value=qst;render()}
+    if(qi){var hit=D.items.filter(function(x){return x.id===qi})[0];document.getElementById('q-item').value=hit?hit.name:qi;answer()}}catch(e){}
   function fitTitle(){var h=document.getElementById('hero-h'),s=h&&h.querySelector('.fit');if(!s||!h.clientWidth)return;h.style.fontSize='';var cs=parseFloat(getComputedStyle(h).fontSize),r=h.clientWidth/s.offsetWidth;h.style.fontSize=Math.min(84,Math.max(32,Math.floor(cs*r*0.995)))+'px'}
   fitTitle();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitle);var ft;window.addEventListener('resize',function(){clearTimeout(ft);ft=setTimeout(fitTitle,80)});window.addEventListener('hashchange',function(){setTimeout(fitTitle,0)});
   render();

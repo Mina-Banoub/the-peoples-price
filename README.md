@@ -16,7 +16,8 @@ The site compares that with today's average price, and with a stricter benchmark
 | `docs/data.json` | All prices and pay figures the site shows. Updated when BLS publishes new data (once a month). |
 | `config/items.json` | The list of tracked items and the rules. Edit this to add or remove items. |
 | `scripts/update.py` | Downloads the latest data from the BLS Public Data API and rebuilds `docs/data.json`. |
-| `scripts/build_site.py` | Rebuilds `docs/index.html` from `src/head.html`, `src/body.html` and `src/app.js`. |
+| `scripts/build_site.py` | Rebuilds `docs/index.html` and `docs/about.html` from `src/` and `config/site.json`. |
+| `config/site.json` | Site address, contact email and Google Analytics measurement ID (empty = analytics off). |
 | `data/report.md` | A short report from the latest update: what changed, anything that needs a look, anything left out. |
 | `data/seed.json` | The BLS figures used for the first version (from the October 14, 2026 release). |
 | `.github/workflows/update.yml` | Checks BLS for new data every Wednesday, and on demand. Commits only when something changed. |
@@ -51,3 +52,7 @@ The site compares that with today's average price, and with a stricter benchmark
 ## A note on interpretation
 
 A price above the People's Price isn't proof of overcharging. Some items cost more for real reasons (supply shocks, crop failures, herd sizes). The People's Price is a benchmark for affordability, not a judgment on any store.
+
+## Analytics
+
+Set `gaMeasurementId` in `config/site.json` (e.g. `G-ABC123XYZ`), run `python3 scripts/build_site.py`, and commit `docs/`. Visitors in the EEA, UK and Switzerland get no analytics cookies (consent defaults to denied there), so no cookie banner is shown. Ads signals and Google signals are off.

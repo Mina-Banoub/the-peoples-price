@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="How The People's Price works, where the data comes from, and our privacy policy.">
+<link rel="canonical" href="https://thepeoplesprice.org/about.html">
+<meta name="theme-color" content="#FFD23F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The People's Price">
+<meta property="og:title" content="About · The People's Price">
+<meta property="og:description" content="How The People's Price works, where the data comes from, and our privacy policy.">
+<meta property="og:url" content="https://thepeoplesprice.org/about.html">
+<meta property="og:image" content="https://thepeoplesprice.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The People's Price: a table comparing what eggs, ground beef and gasoline would cost at paycheck pace with what they cost now.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About · The People's Price">
+<meta name="twitter:description" content="How The People's Price works, where the data comes from, and our privacy policy.">
+<meta name="twitter:image" content="https://thepeoplesprice.org/og-image.png">
+<script>try{if(localStorage.getItem('pp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>About · The People's Price</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500;75..100,700;75..100,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shelf-tag cards in a responsive grid under a single ruled header; receipt-style mono for every price */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#0E1621; --muted:#5A6573; --rule:#D5DBE2;
+  --tag:#FFD23F; --tag-ink:#1A1400; --over:#C2362B; --over-soft:#FBE3E0; --under:#1E7A4B; --under-soft:#DDF2E6; --link:#1F55A8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Public Sans",system-ui,-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1117; --paper:#161C24; --ink:#E8ECF1; --muted:#9AA5B3; --rule:#2B3440;
+  --tag:#F2C531; --tag-ink:#1A1400; --over:#F2776B; --over-soft:#3A1E1C; --under:#5BCB8E; --under-soft:#173226; --link:#8DB4F0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1117; --paper:#161C24; --ink:#E8ECF1; --muted:#9AA5B3; --rule:#2B3440;
+  --tag:#F2C531; --tag-ink:#1A1400; --over:#F2776B; --over-soft:#3A1E1C; --under:#5BCB8E; --under-soft:#173226; --link:#8DB4F0; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+.wrap>*{min-width:0}
+header{display:grid;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand .stamp{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;font-size:12px;background:var(--tag);color:var(--tag-ink);padding:3px 8px;border-radius:3px}
+h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(38px,8vw,72px);line-height:.95;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{max-width:62ch;margin:0;font-size:17px;color:var(--ink)}
+.lede b{font-weight:600}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end}
+label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:grid;gap:4px}
+select,input{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:9px 10px;min-width:0}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.fact{background:var(--paper);padding:12px 14px;display:grid;gap:2px}
+.fact b{font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.fact span{font-size:12.5px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.sh{display:grid;gap:2px;margin-bottom:12px}
+.sh p{margin:0;color:var(--muted);font-size:14px}
+.sh-row{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.feat h2{display:flex;align-items:center;gap:10px}
+.tbox{overflow-x:auto;background:var(--paper);border:1px solid var(--rule);border-radius:8px}
+.pt{width:100%;min-width:720px;border-collapse:collapse;font-size:14px}
+.pt th{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:right;padding:10px 12px;border-bottom:2px solid var(--ink);white-space:nowrap;vertical-align:bottom}
+.pt th:first-child,.pt td:first-child{text-align:left}
+.pt th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+.pt th button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.pt th[aria-sort] button{color:var(--ink)}
+.pt td{padding:9px 12px;border-bottom:1px solid var(--rule);text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pt tr:last-child td{border-bottom:none}
+.pt td.nm{font-family:var(--body);white-space:normal;min-width:190px}
+.pt td.nm b{font-weight:600}
+.pt td.nm span{display:block;font-size:12px;color:var(--muted)}
+.pt td.nm i{font-style:normal}
+.pt td.ppc{font-weight:600;background:color-mix(in srgb,var(--tag) 22%,transparent)}
+.pt .dt{display:block;font-family:var(--body);font-size:11.5px;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--mono);font-weight:600;font-size:13px;padding:2px 8px;border-radius:999px}
+.chip.over{background:var(--over-soft);color:var(--over)}
+.chip.under{background:var(--under-soft);color:var(--under)}
+.chip.none{color:var(--muted);border:1px solid var(--rule)}
+.tag{min-width:0;background:var(--paper);border:1px solid var(--rule);border-radius:8px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.tag .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:12px 12px 0;white-space:nowrap}
+.tag .cat{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.tag .where{flex:none;font-size:11px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis}
+.tag h3{margin-left:12px!important;margin-right:12px!important;font-family:var(--display);font-weight:700;font-stretch:80%;font-size:19px;line-height:1.2;margin:3px 14px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag .sub{font-size:12px;color:var(--muted);margin:1px 12px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag .unit{font-weight:500;font-size:14px;color:var(--muted);font-family:var(--body)}
+.pp{margin:10px 12px 10px;background:var(--tag);color:var(--tag-ink);border-radius:5px;padding:7px 12px 8px;display:grid;gap:1px}
+.pp small{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;font-size:11px;white-space:nowrap}
+.pp b{font-family:var(--mono);font-weight:600;font-size:26px;font-variant-numeric:tabular-nums;line-height:1}
+.rows{display:grid;gap:3px;padding:0 12px 8px;font-size:13px}
+.row{white-space:nowrap}
+.row{display:flex;justify-content:space-between;gap:10px}
+.row span{color:var(--muted)}
+.row b{font-family:var(--mono);font-weight:400;font-variant-numeric:tabular-nums}
+.verdict{padding:9px 12px;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--rule)}
+.verdict.over{background:var(--over-soft);color:var(--over)}
+.verdict.under{background:var(--under-soft);color:var(--under)}
+.verdict.none{color:var(--muted);font-weight:500}
+.verdict b{font-family:var(--mono)}
+.mins{font-size:12px;color:var(--muted);padding:0 12px 10px;white-space:nowrap}
+section h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:28px;margin:0 0 4px}
+.check{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:16px;display:grid;gap:14px}
+.check form{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.check .money{position:relative}
+.check .money input{padding-left:22px;width:120px}
+.check .money::before{content:"$";position:absolute;left:10px;bottom:10px;color:var(--muted);font-size:15px}
+button{font:inherit;font-weight:600;font-size:15px;border-radius:6px;padding:9px 16px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);cursor:pointer}
+.result{font-size:16px;min-height:1.5em}
+.result b{font-family:var(--mono)}
+.result.over b{color:var(--over)} .result.under b{color:var(--under)}
+.method{display:grid;gap:8px;font-size:14px;color:var(--muted);max-width:75ch}
+.method p{margin:0}
+.method a{color:var(--link)}
+.method h2{color:var(--ink)}
+.formula{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;color:var(--ink);overflow-x:auto}
+.hero{display:grid;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.hero h1{font-size:clamp(32px,10.4vw,84px);line-height:1;white-space:nowrap;width:100%}
+.hero h1 .fit{display:inline-block}
+.hero h1 .hl{background:var(--tag);color:var(--tag-ink);padding:0 .12em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero .lede{font-size:clamp(15px,1.6vw,17px);max-width:none;width:100%}
+.search{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.2fr) minmax(0,1fr) auto;gap:12px;align-items:end;background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:14px;box-shadow:6px 6px 0 var(--tag)}
+[hidden]{display:none!important}
+.search label{font-size:12px;display:block}
+.search label>input,.search label>select,.search label>.money{margin-top:6px}
+.search .opt{margin-left:4px}
+.search .opt{font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted);opacity:.8}
+.search input,.search select{width:100%;box-sizing:border-box;font-size:16px;padding:11px 12px}
+.search .money{display:block}
+.search .money input{width:100%;padding-left:24px}
+.search .money::before{bottom:12px;left:11px}
+.go{font-size:16px;padding:12px 18px;white-space:nowrap;background:var(--ink);color:var(--bg)}
+.quick{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.qchip{font:inherit;font-size:13px;font-weight:500;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:5px 12px;cursor:pointer}
+.qchip:hover{border-color:var(--ink)}
+.answer{display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);gap:28px;align-items:center}
+.answer .miss{grid-column:1/-1;margin:0;font-size:16px;line-height:2}
+.ans-text{display:grid;gap:10px;min-width:0}
+.ans-text h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(26px,4vw,40px);line-height:1.05;margin:0;text-wrap:balance}
+.ans-text h2 em{font-style:normal}
+.ans-text h2 em.over{color:var(--over)} .ans-text h2 em.under{color:var(--under)}
+.ans-text p{margin:0;font-size:16px;max-width:60ch}
+.ans-text b{font-family:var(--mono);font-weight:600}
+.ans-text .you{font-size:17px;padding:10px 12px;border-radius:6px;background:var(--paper);border:1px solid var(--rule)}
+.ans-text .you.over{background:var(--over-soft);border-color:transparent} .ans-text .you.under{background:var(--under-soft);border-color:transparent}
+.ans-text .also{font-size:13px;color:var(--muted);line-height:2}
+.more-wrap{display:flex;justify-content:center}
+.more{background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:11px 22px;font-size:15px}
+.more:hover{background:var(--ink);color:var(--bg)}
+.full{display:grid;gap:28px}
+.full>*{min-width:0}
+@media (max-width:760px){.search{grid-template-columns:1fr 1fr}.search .f-item{grid-column:1/-1}.go{grid-column:1/-1}.answer{grid-template-columns:1fr}.ans-card{max-width:320px}}
+.facts{margin-top:-6px}
+.ladder{display:grid;gap:10px;margin-top:4px;max-width:560px}
+.ladder .lr{display:grid;grid-template-columns:124px minmax(0,1fr) 70px;gap:12px;align-items:center;font-size:14px}
+.ladder .lr span{color:var(--muted);white-space:nowrap}
+.ladder .lr b{font-family:var(--mono);font-weight:600;text-align:right;font-size:15px}
+.ladder .tr{height:24px;background:var(--rule);border-radius:3px;overflow:hidden}
+.ladder .tr i{display:block;height:100%;border-radius:3px}
+.ladder .b19 i{background:var(--muted);opacity:.55}
+.ladder .b2 i{background:var(--muted)}
+.ladder .bpp i{background:var(--tag)}
+.ladder .bnow.over i{background:var(--over)} .ladder .bnow.under i{background:var(--under)} .ladder .bnow.none i{background:var(--ink)}
+.ladder .byou i{background:var(--link)}
+.ladder .lr.bpp span{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:no-preference){.ladder .tr i{animation:grow .6s ease-out both}@keyframes grow{from{transform:scaleX(.02);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}}
+.glance{min-width:0}
+.gl-key{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.gl-key .sw{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sw.over{background:var(--over)} .sw.under{background:var(--under)}
+.gl{display:grid;gap:3px;background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.gl button{all:unset;cursor:pointer;display:grid;grid-template-columns:150px minmax(0,1fr) 52px;gap:10px;align-items:center;font-size:13px;padding:2px 4px;border-radius:4px}
+.gl button:hover,.gl button:focus-visible{background:var(--bg)}
+.gl button:focus-visible{outline:2px solid var(--link)}
+.gl .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gl .tk{position:relative;height:12px}
+.gl .tk::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px solid var(--ink);opacity:.5}
+.gl .tk i{position:absolute;top:0;height:100%;border-radius:2px}
+.gl .tk i.over{left:50%;background:var(--over)} .gl .tk i.under{right:50%;background:var(--under)}
+.gl .v{font-family:var(--mono);font-size:12px;text-align:right}
+.gl .v.over{color:var(--over)} .gl .v.under{color:var(--under)}
+.gl .ax{display:grid;grid-template-columns:150px minmax(0,1fr) 52px;gap:10px;font-family:var(--mono);font-size:11px;color:var(--muted);padding:0 4px}
+.gl .ax div{display:flex;justify-content:space-between}
+.tbox{position:relative}
+.tbox.fog{max-height:calc(10 * 51px + 100px);overflow:hidden}
+.tbox.fog::after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(to bottom,transparent,var(--paper) 85%);pointer-events:none}
+.fogbtn{display:flex;justify-content:center;margin-top:-26px;position:relative;z-index:1}
+.fogbtn .more{background:var(--paper)}
+.fogbtn.open{margin-top:14px}
+.ico{width:15px;height:15px;vertical-align:-3px;margin-right:5px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tag .cat{display:inline-flex;align-items:center}
+@media (max-width:560px){.gl button,.gl .ax{grid-template-columns:96px minmax(0,1fr) 44px;gap:6px}.ladder .lr{grid-template-columns:96px minmax(0,1fr) 58px}}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--rule);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.topin{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;height:56px}
+.mark{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:19px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.mark .dot{width:14px;height:14px;background:var(--tag);border-radius:3px;transform:rotate(45deg)}
+.tabs{display:flex;gap:4px}
+.tabs a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.tabs a:focus-visible,.mark:focus-visible,.browse:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+main{display:grid;gap:28px;min-width:0}
+main>*{min-width:0}
+details.method{max-width:none;display:block;background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:0}
+details.method summary{list-style:none;cursor:pointer;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:22px;color:var(--ink)}
+details.method summary::-webkit-details-marker{display:none}
+details.method summary::after{content:"+";font-family:var(--mono);font-weight:400;font-size:24px;line-height:1;color:var(--muted)}
+details.method[open] summary::after{content:"−"}
+details.method summary:focus-visible{outline:2px solid var(--link);outline-offset:-2px;border-radius:8px}
+
+.browse{justify-self:start;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--tag);padding-bottom:2px;font-size:16px}
+.allhead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:16px}
+.h-all{font-size:clamp(40px,8vw,64px)}
+.allhead .lede{margin-top:6px}
+@media (max-width:560px){.mark{font-size:0;gap:0}.mark .dot{width:16px;height:16px}.tabs a{font-size:13px;padding:7px 10px}}
+.m-body{display:grid;gap:14px;padding:4px 22px 22px;font-size:15px;line-height:1.6;color:var(--ink)}
+.m-body p{margin:0}
+.m-body h3{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:17px;margin:8px 0 0}
+.m-body .formula{font-size:14px;padding:12px 14px}
+.m-body .m-foot{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px}
+.defs{margin:0;display:grid;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.defs>div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;padding:11px 14px;border-top:1px solid var(--rule)}
+.defs>div:first-child{border-top:none}
+.defs dt{font-weight:600;display:flex;align-items:center;gap:8px}
+.defs dd{margin:0;color:var(--ink)}
+.sw2{display:inline-block;width:22px;height:12px;border-radius:3px;flex:none}
+.sw2.s19{background:var(--muted);opacity:.55} .sw2.s2{background:var(--muted)} .sw2.spp{background:var(--tag)}
+.sw2.snow{background:var(--over);width:11px;border-radius:3px 0 0 3px} .sw2.snow2{background:var(--under);width:11px;border-radius:0 3px 3px 0;margin-left:-8px}
+.sw2.syou{background:var(--link)}
+@media (max-width:600px){.defs>div{grid-template-columns:1fr;gap:4px}.m-body{padding:4px 16px 18px}}
+.navr{display:flex;align-items:center;gap:8px}
+.theme{all:unset;box-sizing:border-box;width:36px;height:36px;border-radius:999px;border:1px solid var(--rule);display:grid;place-items:center;cursor:pointer;color:var(--ink);background:var(--paper)}
+.theme:hover{border-color:var(--ink)}
+.theme:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme .i-sun{display:none}
+:root[data-theme="dark"] .theme .i-sun{display:block}
+:root[data-theme="dark"] .theme .i-moon{display:none}
+@media (max-width:560px){.navr{gap:6px}.theme{width:32px;height:32px}}
+.foot{border-top:1px solid var(--rule);margin-top:28px;padding-top:20px;font-size:13px;color:var(--muted);line-height:1.6}
+.foot p{margin:0 0 8px;max-width:none}
+.foot b{color:var(--ink)}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.foot a{color:var(--link)}
+.share{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.share button,.share a{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.share button:hover,.share a:hover{border-color:var(--ink)}
+.share .ok{color:var(--under);font-weight:600}
+.share svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.prose{display:grid;gap:14px;font-size:16px;line-height:1.65;max-width:72ch}
+.prose h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:26px;margin:18px 0 0}
+.prose p,.prose ul{margin:0}
+.prose a{color:var(--link)}
+</style>
+
+</head>
+<body>
+<nav class="topbar" aria-label="Main">
+  <div class="topin">
+    <a class="mark" href="./#check"><span class="dot"></span>The People's Price</a>
+    <div class="navr">
+      <div class="tabs"><a href="./#check" id="tab-check">Check a price</a><a href="./#all" id="tab-all">All prices</a><a href="about.html" id="tab-about" aria-current="page">About</a></div>
+      <button type="button" class="theme" id="theme" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+<main class="prose" id="about">
+  <h1 class="h-all">About</h1>
+  <p><b>The People's Price</b> shows what everyday items would cost today if their prices had risen only as fast as a typical paycheck since 2019, and compares that with what they actually cost.</p>
+  <h2>How it works</h2>
+  <p>For each item we take its average price across all of 2019, before the pandemic, and grow it by how much median weekly pay for full-time workers has grown since then. That's the People's Price. We also show the 2019 price grown 2% a year, the Federal Reserve's inflation target, as a stricter benchmark.</p>
+  <p>Goods use average retail prices published by the U.S. Bureau of Labor Statistics (BLS). Services, clothing, household goods, tech and medicines don't have one national price, so they're shown per $100 spent in 2019, using the BLS consumer price index for each. Prices update automatically when BLS publishes new data, about once a month.</p>
+  <p>A price above the People's Price isn't proof of overcharging. Some things cost more for real reasons, like a bird flu outbreak, a poor harvest or a smaller cattle herd. The People's Price is a benchmark for affordability, not a judgment on any store or company.</p>
+  <h2>Who runs it</h2>
+  <p>The People's Price is an independent project. It isn't affiliated with or endorsed by BLS or any government agency, company or political group. Questions, corrections and ideas are welcome at <a href="mailto:hello@thepeoplesprice.org">hello@thepeoplesprice.org</a>.</p>
+  <h2 id="privacy">Privacy</h2>
+  <p><i>Last updated November 2, 2026.</i></p>
+  <ul>
+    <li><b>What you type stays on your device.</b> Item searches and prices you enter are worked out in your browser. We don't store them on a server, and we don't ask for your name, email or location.</li>
+    <li><b>Saved settings.</b> Your browser remembers the state and light or dark mode you last chose, so the page opens the same way next time. These settings stay on your device and you can clear them in your browser settings.</li>
+    <li><b>Visitor statistics.</b> We may use Google Analytics to count visits and see which items people look up, so we know what to improve. Google Analytics uses cookies and collects information such as pages viewed, approximate location (country or city), device and browser type, and how you arrived. We don't use it for advertising or to identify you. Visitors in the European Economic Area, the United Kingdom and Switzerland are not tracked with cookies. Learn how Google uses this data at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>, or opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a>.</li>
+    <li><b>Hosting.</b> The site is hosted on GitHub Pages, which may log visitors' IP addresses for security, as described in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a>.</li>
+    <li><b>Fonts.</b> Fonts load from Google Fonts, which receives your IP address when the page loads.</li>
+    <li><b>No selling of data.</b> We don't sell or share personal information. If we add advertising in the future, we'll update this policy first.</li>
+  </ul>
+  <p>Questions about privacy: <a href="mailto:hello@thepeoplesprice.org">hello@thepeoplesprice.org</a>.</p>
+  <h2>Data sources</h2>
+  <p><a href="https://www.bls.gov/cpi/factsheets/average-prices.htm" target="_blank" rel="noopener">BLS Average Price Data</a>, the <a href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">BLS Consumer Price Index</a> and <a href="https://www.bls.gov/news.release/wkyeng.toc.htm" target="_blank" rel="noopener">BLS Usual Weekly Earnings</a>.</p>
+  <p><a href="./">← Check a price</a></p>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p><b>The People's Price</b> is an independent project. Prices and pay come from the U.S. Bureau of Labor Statistics; this site is not affiliated with or endorsed by BLS. A price above the People's Price is a benchmark, not proof of overcharging.</p>
+    <p class="foot-links"><a href="about.html">About and privacy</a><a class="foot-mail" href="mailto:hello@thepeoplesprice.org">hello@thepeoplesprice.org</a></p>
+  </div>
+</footer>
+</div>
+<script>(function(){var r=document.documentElement,b=document.getElementById('theme');function s(t,v){r.setAttribute('data-theme',t);var l=t==='dark'?'Switch to light mode':'Switch to dark mode';b.setAttribute('aria-label',l);b.title=l;if(v){try{localStorage.setItem('pp-theme',t)}catch(e){}}}var t='light';try{if(localStorage.getItem('pp-theme')==='dark')t='dark'}catch(e){}s(t,false);b.addEventListener('click',function(){s(r.getAttribute('data-theme')==='dark'?'light':'dark',true)})})();</script>
+</body>
+</html>

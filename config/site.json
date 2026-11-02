@@ -1,0 +1,6 @@
+{
+ "_about": "Site settings used by scripts/build_site.py. Leave gaMeasurementId empty to turn Google Analytics off.",
+ "siteUrl": "https://thepeoplesprice.org",
+ "contactEmail": "hello@thepeoplesprice.org",
+ "gaMeasurementId": ""
+}
