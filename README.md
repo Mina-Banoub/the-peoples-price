@@ -11,13 +11,13 @@ The site compares that with today's average price, and with a stricter benchmark
 | Path | What it is |
 |---|---|
 | `docs/index.html` | The website (served by GitHub Pages). Built from `src/`. |
-| `docs/data.json` | All prices and pay figures the site shows. Rebuilt every month. |
+| `docs/data.json` | All prices and pay figures the site shows. Updated when BLS publishes new data (once a month). |
 | `config/items.json` | The list of tracked items and the rules. Edit this to add or remove items. |
 | `scripts/update.py` | Downloads the latest data from the BLS Public Data API and rebuilds `docs/data.json`. |
 | `scripts/build_site.py` | Rebuilds `docs/index.html` from `src/head.html`, `src/body.html` and `src/app.js`. |
 | `data/report.md` | A short report from the latest update: what changed, anything that needs a look, anything left out. |
 | `data/seed.json` | The BLS figures used for the first version (from the October 14, 2026 release). |
-| `.github/workflows/update.yml` | Runs the update on the 16th of every month, and on demand. |
+| `.github/workflows/update.yml` | Checks BLS for new data every Wednesday, and on demand. Commits only when something changed. |
 
 ## Data sources
 
@@ -39,12 +39,12 @@ The site compares that with today's average price, and with a stricter benchmark
 1. **BLS key:** register for free at https://data.bls.gov/registrationEngine/ and activate the key from the email.
 2. **Store the key:** in this repository, go to **Settings → Secrets and variables → Actions → New repository secret**. Name it `BLS_API_KEY` and paste the key.
 3. **Turn on the website:** go to **Settings → Pages**. Under *Build and deployment*, choose **Deploy from a branch**, branch **main**, folder **/docs**, then **Save**. The site appears at `https://<your-username>.github.io/the-peoples-price/` within a few minutes.
-4. **Run the first update:** go to **Actions → Monthly price update → Run workflow**. When it finishes, the summary shows the data report.
+4. **Run the first update:** go to **Actions → Weekly price check → Run workflow**. When it finishes, the summary shows the data report.
 
 ## Everyday tasks
 
-- **Update now:** Actions → Monthly price update → Run workflow.
-- **Pause monthly updates:** Actions → Monthly price update → ⋯ → Disable workflow.
+- **Update now:** Actions → Weekly price check → Run workflow.
+- **Pause updates:** Actions → Weekly price check → ⋯ → Disable workflow.
 - **Add an item:** add an entry to `config/items.json`, e.g.
   `{"id": "honey", "series": "AP:718631", "name": "Honey", "desc": "", "unit": "lb", "cat": "Pantry"}`
   or for a service `{"id": "...", "series": "CU:SEXX", ..., "unit": "$100 spent in 2019", "cat": "Services", "kind": "index"}`.

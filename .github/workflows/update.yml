@@ -1,9 +1,10 @@
-name: Monthly price update
+name: Weekly price check
 
 on:
   schedule:
-    # 16th of each month, 15:17 UTC — after BLS publishes the CPI and average prices (usually the 10th–15th).
-    - cron: "17 15 16 * *"
+    # Every Wednesday, 15:17 UTC. BLS publishes new prices once a month (usually the 10th–15th);
+    # weekly checks pick them up within a few days and change nothing in the weeks between.
+    - cron: "17 15 * * 3"
   workflow_dispatch: {}
 
 permissions:

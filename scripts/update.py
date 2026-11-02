@@ -171,6 +171,11 @@ def main():
         lp, lv = w[-1]
         wage = {"base": sum(base) / 4, "now": lv, "label": f"Q{lp[-1]} {lp[:4]}"}
     data, dropped, notes = build(cfg, summ, wage, prev)
+    if prev:
+        strip = lambda d: {k: v for k, v in d.items() if k != "updated"}
+        if strip(data) == strip(prev):
+            data["updated"] = prev.get("updated", data["updated"])
+            print("No new BLS data since the last update.")
     if len(data["items"]) < 0.9 * len(cfg["items"]):
         raise SystemExit(f"Only {len(data['items'])} of {len(cfg['items'])} items are usable. Not overwriting data.json.\n" + "\n".join(dropped))
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
