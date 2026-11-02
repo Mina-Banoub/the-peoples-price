@@ -69,6 +69,14 @@
    "cat": "Dairy & eggs"
   },
   {
+   "id": "lowfat",
+   "series": "AP:FJ1101",
+   "name": "Low-fat milk",
+   "desc": "reduced fat or skim",
+   "unit": "gallon",
+   "cat": "Dairy & eggs"
+  },
+  {
    "id": "beef",
    "series": "AP:703112",
    "name": "Ground beef",
@@ -123,216 +131,6 @@
    "desc": "boneless",
    "unit": "lb",
    "cat": "Meat"
-  },
-  {
-   "id": "bread",
-   "series": "AP:702111",
-   "name": "White bread",
-   "desc": "pan loaf",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "flour",
-   "series": "AP:701111",
-   "name": "Flour",
-   "desc": "all purpose",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "rice",
-   "series": "AP:701312",
-   "name": "Rice",
-   "desc": "long grain, white",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "pasta",
-   "series": "AP:701322",
-   "name": "Pasta",
-   "desc": "spaghetti, macaroni",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "beans",
-   "series": "AP:714233",
-   "name": "Dried beans",
-   "desc": "any type",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "sugar",
-   "series": "AP:715211",
-   "name": "Sugar",
-   "desc": "white",
-   "unit": "lb",
-   "cat": "Pantry"
-  },
-  {
-   "id": "coffee",
-   "series": "AP:717311",
-   "name": "Coffee",
-   "desc": "100% ground roast",
-   "unit": "lb",
-   "cat": "Pantry",
-   "note": "BLS began this coffee series in Oct 2019, so the 2019 average covers Oct–Dec.",
-   "min2019": 3
-  },
-  {
-   "id": "cookies",
-   "series": "AP:702421",
-   "name": "Cookies",
-   "desc": "chocolate chip",
-   "unit": "lb",
-   "cat": "Snacks & drinks"
-  },
-  {
-   "id": "chips",
-   "series": "AP:718311",
-   "name": "Potato chips",
-   "desc": "",
-   "unit": "16 oz",
-   "cat": "Snacks & drinks"
-  },
-  {
-   "id": "soda",
-   "series": "AP:FN1101",
-   "name": "Soft drinks",
-   "desc": "all types",
-   "unit": "2 liters",
-   "cat": "Snacks & drinks"
-  },
-  {
-   "id": "beer",
-   "series": "AP:720111",
-   "name": "Beer",
-   "desc": "all types",
-   "unit": "16 oz",
-   "cat": "Snacks & drinks"
-  },
-  {
-   "id": "wine",
-   "series": "AP:720311",
-   "name": "Wine",
-   "desc": "red and white",
-   "unit": "liter",
-   "cat": "Snacks & drinks"
-  },
-  {
-   "id": "bananas",
-   "series": "AP:711211",
-   "name": "Bananas",
-   "desc": "",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "oranges",
-   "series": "AP:711311",
-   "name": "Oranges",
-   "desc": "navel",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "lemons",
-   "series": "AP:711412",
-   "name": "Lemons",
-   "desc": "",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "strawberries",
-   "series": "AP:711415",
-   "name": "Strawberries",
-   "desc": "",
-   "unit": "12 oz",
-   "cat": "Produce"
-  },
-  {
-   "id": "potatoes",
-   "series": "AP:712112",
-   "name": "Potatoes",
-   "desc": "white",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "tomatoes",
-   "series": "AP:712311",
-   "name": "Tomatoes",
-   "desc": "field grown",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "iceberg",
-   "series": "AP:712211",
-   "name": "Iceberg lettuce",
-   "desc": "",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "romaine",
-   "series": "AP:FL2101",
-   "name": "Romaine lettuce",
-   "desc": "",
-   "unit": "lb",
-   "cat": "Produce"
-  },
-  {
-   "id": "gas",
-   "series": "AP:74714",
-   "name": "Gasoline",
-   "desc": "regular unleaded",
-   "unit": "gallon",
-   "cat": "Energy"
-  },
-  {
-   "id": "diesel",
-   "series": "AP:74717",
-   "name": "Diesel",
-   "desc": "automotive",
-   "unit": "gallon",
-   "cat": "Energy"
-  },
-  {
-   "id": "power",
-   "series": "AP:72610",
-   "name": "Electricity",
-   "desc": "residential",
-   "unit": "kWh",
-   "cat": "Energy"
-  },
-  {
-   "id": "natgas",
-   "series": "AP:72620",
-   "name": "Natural gas",
-   "desc": "piped utility",
-   "unit": "therm",
-   "cat": "Energy"
-  },
-  {
-   "id": "fueloil",
-   "series": "AP:72511",
-   "name": "Heating oil",
-   "desc": "#2 fuel oil",
-   "unit": "gallon",
-   "cat": "Energy"
-  },
-  {
-   "id": "lowfat",
-   "series": "AP:FJ1101",
-   "name": "Low-fat milk",
-   "desc": "reduced fat or skim",
-   "unit": "gallon",
-   "cat": "Dairy & eggs"
   },
   {
    "id": "chuckgr",
@@ -417,12 +215,110 @@
    "cat": "Meat"
   },
   {
+   "id": "bread",
+   "series": "AP:702111",
+   "name": "White bread",
+   "desc": "pan loaf",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "flour",
+   "series": "AP:701111",
+   "name": "Flour",
+   "desc": "all purpose",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "rice",
+   "series": "AP:701312",
+   "name": "Rice",
+   "desc": "long grain, white",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "pasta",
+   "series": "AP:701322",
+   "name": "Pasta",
+   "desc": "spaghetti, macaroni",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "beans",
+   "series": "AP:714233",
+   "name": "Dried beans",
+   "desc": "any type",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "sugar",
+   "series": "AP:715211",
+   "name": "Sugar",
+   "desc": "white",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "coffee",
+   "series": "AP:717311",
+   "name": "Coffee",
+   "desc": "100% ground roast",
+   "unit": "lb",
+   "cat": "Pantry",
+   "note": "BLS began this coffee series in Oct 2019, so the 2019 average covers Oct–Dec.",
+   "min2019": 3
+  },
+  {
    "id": "wheat",
    "series": "AP:702212",
    "name": "Wheat bread",
    "desc": "whole wheat, pan",
    "unit": "lb",
    "cat": "Pantry"
+  },
+  {
+   "id": "cookies",
+   "series": "AP:702421",
+   "name": "Cookies",
+   "desc": "chocolate chip",
+   "unit": "lb",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "chips",
+   "series": "AP:718311",
+   "name": "Potato chips",
+   "desc": "",
+   "unit": "16 oz",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "soda",
+   "series": "AP:FN1101",
+   "name": "Soft drinks",
+   "desc": "all types",
+   "unit": "2 liters",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "beer",
+   "series": "AP:720111",
+   "name": "Beer",
+   "desc": "all types",
+   "unit": "16 oz",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "wine",
+   "series": "AP:720311",
+   "name": "Wine",
+   "desc": "red and white",
+   "unit": "liter",
+   "cat": "Snacks & drinks"
   },
   {
    "id": "oj",
@@ -441,12 +337,116 @@
    "cat": "Snacks & drinks"
   },
   {
+   "id": "bananas",
+   "series": "AP:711211",
+   "name": "Bananas",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "oranges",
+   "series": "AP:711311",
+   "name": "Oranges",
+   "desc": "navel",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "lemons",
+   "series": "AP:711412",
+   "name": "Lemons",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "strawberries",
+   "series": "AP:711415",
+   "name": "Strawberries",
+   "desc": "",
+   "unit": "12 oz",
+   "cat": "Produce"
+  },
+  {
+   "id": "potatoes",
+   "series": "AP:712112",
+   "name": "Potatoes",
+   "desc": "white",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "tomatoes",
+   "series": "AP:712311",
+   "name": "Tomatoes",
+   "desc": "field grown",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "iceberg",
+   "series": "AP:712211",
+   "name": "Iceberg lettuce",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "romaine",
+   "series": "AP:FL2101",
+   "name": "Romaine lettuce",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
    "id": "grapefruit",
    "series": "AP:711411",
    "name": "Grapefruit",
    "desc": "",
    "unit": "lb",
    "cat": "Produce"
+  },
+  {
+   "id": "gas",
+   "series": "AP:74714",
+   "name": "Gasoline",
+   "desc": "regular unleaded",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "diesel",
+   "series": "AP:74717",
+   "name": "Diesel",
+   "desc": "automotive",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "power",
+   "series": "AP:72610",
+   "name": "Electricity",
+   "desc": "residential",
+   "unit": "kWh",
+   "cat": "Energy"
+  },
+  {
+   "id": "natgas",
+   "series": "AP:72620",
+   "name": "Natural gas",
+   "desc": "piped utility",
+   "unit": "therm",
+   "cat": "Energy"
+  },
+  {
+   "id": "fueloil",
+   "series": "AP:72511",
+   "name": "Heating oil",
+   "desc": "#2 fuel oil",
+   "unit": "gallon",
+   "cat": "Energy"
   },
   {
    "id": "midgrade",
@@ -463,6 +463,217 @@
    "desc": "unleaded",
    "unit": "gallon",
    "cat": "Energy"
+  },
+  {
+   "id": "menwear",
+   "series": "CU:SEAA",
+   "name": "Men's clothing",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "womenwear",
+   "series": "CU:SEAC",
+   "name": "Women's clothing",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "boyswear",
+   "series": "CU:SEAB",
+   "name": "Boys' clothing",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "girlswear",
+   "series": "CU:SEAD",
+   "name": "Girls' clothing",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "babywear",
+   "series": "CU:SEAF",
+   "name": "Baby and toddler clothing",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "shoes",
+   "series": "CU:SEAE",
+   "name": "Shoes",
+   "desc": "all footwear",
+   "unit": "$100 spent in 2019",
+   "cat": "Clothing",
+   "kind": "index"
+  },
+  {
+   "id": "furniture",
+   "series": "CU:SEHJ",
+   "name": "Furniture and bedding",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "majorapp",
+   "series": "CU:SEHK01",
+   "name": "Major appliances",
+   "desc": "washers, fridges, stoves",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "smallapp",
+   "series": "CU:SEHK02",
+   "name": "Small appliances",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "toys",
+   "series": "CU:SERE01",
+   "name": "Toys",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "sportgoods",
+   "series": "CU:SERC",
+   "name": "Sporting goods",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "petfood",
+   "series": "CU:SS61031",
+   "name": "Pet food and treats",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "school",
+   "series": "CU:SS33032",
+   "name": "School and office supplies",
+   "desc": "stationery, gift wrap",
+   "unit": "$100 spent in 2019",
+   "cat": "Household goods",
+   "kind": "index"
+  },
+  {
+   "id": "computers",
+   "series": "CU:SEEE01",
+   "name": "Computers",
+   "desc": "and smart home devices",
+   "unit": "$100 spent in 2019",
+   "cat": "Tech",
+   "kind": "index",
+   "note": "BLS adjusts this index for quality improvements, so part of the drop reflects better products at similar prices."
+  },
+  {
+   "id": "phones",
+   "series": "CU:SSEE041",
+   "name": "Smartphones",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Tech",
+   "kind": "index",
+   "min2019": 1,
+   "note": "BLS started its smartphone index in December 2019, so the base is December 2019. BLS adjusts this index for quality improvements, so part of the drop reflects better products at similar prices."
+  },
+  {
+   "id": "tvs",
+   "series": "CU:SERA01",
+   "name": "TVs",
+   "desc": "televisions",
+   "unit": "$100 spent in 2019",
+   "cat": "Tech",
+   "kind": "index",
+   "note": "BLS adjusts this index for quality improvements, so part of the drop reflects better products at similar prices."
+  },
+  {
+   "id": "doctor",
+   "series": "CU:SEMC01",
+   "name": "Doctor visits",
+   "desc": "physicians' services",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "dental",
+   "series": "CU:SEMC02",
+   "name": "Dental care",
+   "desc": "dental services",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "hospital",
+   "series": "CU:SEMD01",
+   "name": "Hospital care",
+   "desc": "hospital services",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "rx",
+   "series": "CU:SEMF01",
+   "name": "Prescription drugs",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "otc",
+   "series": "CU:SEMF02",
+   "name": "Over-the-counter medicine",
+   "desc": "nonprescription drugs",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "eyecare",
+   "series": "CU:SEMC03",
+   "name": "Eyeglasses and eye care",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
+  },
+  {
+   "id": "nursing",
+   "series": "CU:SEMD02",
+   "name": "Nursing homes",
+   "desc": "and adult day services",
+   "unit": "$100 spent in 2019",
+   "cat": "Health",
+   "kind": "index"
   },
   {
    "id": "rent",
@@ -487,33 +698,6 @@
    "series": "CU:SEFV",
    "name": "Restaurant meals",
    "desc": "food away from home",
-   "unit": "$100 spent in 2019",
-   "cat": "Services",
-   "kind": "index"
-  },
-  {
-   "id": "doctor",
-   "series": "CU:SEMC01",
-   "name": "Doctor visits",
-   "desc": "physicians' services",
-   "unit": "$100 spent in 2019",
-   "cat": "Services",
-   "kind": "index"
-  },
-  {
-   "id": "dental",
-   "series": "CU:SEMC02",
-   "name": "Dental care",
-   "desc": "dental services",
-   "unit": "$100 spent in 2019",
-   "cat": "Services",
-   "kind": "index"
-  },
-  {
-   "id": "hospital",
-   "series": "CU:SEMD01",
-   "name": "Hospital care",
-   "desc": "hospital services",
    "unit": "$100 spent in 2019",
    "cat": "Services",
    "kind": "index"
@@ -640,6 +824,87 @@
    "series": "CU:SERF01",
    "name": "Gyms and clubs",
    "desc": "memberships and sports fees",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "carrental",
+   "series": "CU:SETA04",
+   "name": "Car rentals",
+   "desc": "car and truck rental",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "moving",
+   "series": "CU:SEHP03",
+   "name": "Moving and storage",
+   "desc": "moving, storage, freight",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "laundry",
+   "series": "CU:SEGD03",
+   "name": "Laundry and dry cleaning",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "funeral",
+   "series": "CU:SEGD02",
+   "name": "Funerals",
+   "desc": "funeral expenses",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "shows",
+   "series": "CU:SS62031",
+   "name": "Movie, theater and concert tickets",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "sports",
+   "series": "CU:SS62032",
+   "name": "Sporting event tickets",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "postage",
+   "series": "CU:SEEC01",
+   "name": "Postage",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "delivery",
+   "series": "CU:SEEC02",
+   "name": "Package delivery",
+   "desc": "delivery services",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "k12",
+   "series": "CU:SEEB02",
+   "name": "Private school tuition",
+   "desc": "elementary and high school",
    "unit": "$100 spent in 2019",
    "cat": "Services",
    "kind": "index"

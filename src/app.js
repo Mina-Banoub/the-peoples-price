@@ -51,7 +51,12 @@ function start(D){
     'Pantry':'<rect x="6" y="7" width="12" height="13" rx="2"/><path d="M8 4h8v3H8z"/><path d="M6 12h12"/>',
     'Snacks & drinks':'<path d="M7 4h10l-1.5 16h-7z"/><path d="M7.5 9h9"/>',
     'Produce':'<path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19l8-8"/>',
-    'Energy':'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>'};
+    'Energy':'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
+    'Clothing':'<path d="M9 4l3 2 3-2 5 3-2 4-2-1v10H8V10l-2 1-2-4z"/>',
+    'Household goods':'<path d="M4 11h16v6H4z"/><path d="M6 11V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M6 17v2M18 17v2"/>',
+    'Tech':'<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M9 20h6M12 16v4"/>',
+    'Health':'<path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"/>',
+    'Services':'<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M4 13h16"/>'};
   function icon(cat){return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">'+(ICON[cat]||'')+'</svg>'}
   function sub(it){return (it.desc?it.desc+' · ':'')+'per '+it.unit}
   var catSel=document.getElementById('cat');
