@@ -23,7 +23,7 @@ The site compares that with today's average price, and with a stricter benchmark
 
 - **Goods:** BLS Average Price Data (series `APU…`), national and the four census regions.
 - **Services:** BLS Consumer Price Index, not seasonally adjusted (series `CUUR…`). Services have no single price, so the site shows them **per $100 spent in 2019**.
-- **Pay:** BLS median usual weekly earnings, full-time wage and salary workers (`LEU0252881500Q`).
+- **Pay:** BLS median usual weekly earnings, full-time wage and salary workers (`LEU0252881500`).
 
 ## Rules for including an item
 

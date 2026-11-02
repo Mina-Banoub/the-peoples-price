@@ -164,7 +164,7 @@ def main():
                 summ.setdefault(src, {})[a] = summarize(pts, cfg["baseYear"])
         w = raw.get(cfg["wageSeries"])
         if not w:
-            raise SystemExit("Wage series missing from BLS response.")
+            raise SystemExit(f"Wage series {cfg['wageSeries']} missing from BLS response. BLS messages: {problems}")
         base = [v for p, v in w if p.startswith(f"{cfg['baseYear']}-Q")]
         if len(base) != 4:
             raise SystemExit("Wage series is missing base-year quarters.")
