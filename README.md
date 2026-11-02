@@ -1,5 +1,7 @@
 # The People's Price
 
+**Live site:** https://thepeoplesprice.org (custom domain set by `docs/CNAME`)
+
 What everyday items would cost today if their prices had risen only as fast as a typical paycheck since 2019.
 
 **People's Price = 2019 average price × (median weekly pay now ÷ median weekly pay in 2019)**
