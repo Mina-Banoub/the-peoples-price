@@ -1,0 +1,648 @@
+{
+ "_about": "Items tracked by The People's Price. series = AP:<BLS average price item code> or CU:<BLS CPI item code>. kind=index items are shown per $100 spent in 2019.",
+ "baseYear": 2019,
+ "regions": {
+  "0000": "National",
+  "0100": "Northeast",
+  "0200": "Midwest",
+  "0300": "South",
+  "0400": "West"
+ },
+ "wageSeries": "LEU0252881500Q",
+ "freshMonths": 6,
+ "jumpWarnPct": 30,
+ "items": [
+  {
+   "id": "eggs",
+   "series": "AP:708111",
+   "name": "Eggs",
+   "desc": "grade A large",
+   "unit": "dozen",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "milk",
+   "series": "AP:709112",
+   "name": "Milk",
+   "desc": "whole",
+   "unit": "gallon",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "butter",
+   "series": "AP:FS1101",
+   "name": "Butter",
+   "desc": "stick",
+   "unit": "lb",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "cheddar",
+   "series": "AP:710212",
+   "name": "Cheddar cheese",
+   "desc": "natural",
+   "unit": "lb",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "amcheese",
+   "series": "AP:710211",
+   "name": "American cheese",
+   "desc": "processed",
+   "unit": "lb",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "yogurt",
+   "series": "AP:FJ4101",
+   "name": "Yogurt",
+   "desc": "",
+   "unit": "8 oz",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "icecream",
+   "series": "AP:710411",
+   "name": "Ice cream",
+   "desc": "regular",
+   "unit": "half gallon",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "beef",
+   "series": "AP:703112",
+   "name": "Ground beef",
+   "desc": "100% beef",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "chuck",
+   "series": "AP:703213",
+   "name": "Chuck roast",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "sirloin",
+   "series": "AP:703613",
+   "name": "Sirloin steak",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "chicken",
+   "series": "AP:706111",
+   "name": "Whole chicken",
+   "desc": "fresh",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "breast",
+   "series": "AP:FF1101",
+   "name": "Chicken breast",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "bacon",
+   "series": "AP:704111",
+   "name": "Bacon",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "porkchop",
+   "series": "AP:704212",
+   "name": "Pork chops",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "bread",
+   "series": "AP:702111",
+   "name": "White bread",
+   "desc": "pan loaf",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "flour",
+   "series": "AP:701111",
+   "name": "Flour",
+   "desc": "all purpose",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "rice",
+   "series": "AP:701312",
+   "name": "Rice",
+   "desc": "long grain, white",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "pasta",
+   "series": "AP:701322",
+   "name": "Pasta",
+   "desc": "spaghetti, macaroni",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "beans",
+   "series": "AP:714233",
+   "name": "Dried beans",
+   "desc": "any type",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "sugar",
+   "series": "AP:715211",
+   "name": "Sugar",
+   "desc": "white",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "coffee",
+   "series": "AP:717311",
+   "name": "Coffee",
+   "desc": "100% ground roast",
+   "unit": "lb",
+   "cat": "Pantry",
+   "note": "BLS began this coffee series in Oct 2019, so the 2019 average covers Oct–Dec.",
+   "min2019": 3
+  },
+  {
+   "id": "cookies",
+   "series": "AP:702421",
+   "name": "Cookies",
+   "desc": "chocolate chip",
+   "unit": "lb",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "chips",
+   "series": "AP:718311",
+   "name": "Potato chips",
+   "desc": "",
+   "unit": "16 oz",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "soda",
+   "series": "AP:FN1101",
+   "name": "Soft drinks",
+   "desc": "all types",
+   "unit": "2 liters",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "beer",
+   "series": "AP:720111",
+   "name": "Beer",
+   "desc": "all types",
+   "unit": "16 oz",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "wine",
+   "series": "AP:720311",
+   "name": "Wine",
+   "desc": "red and white",
+   "unit": "liter",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "bananas",
+   "series": "AP:711211",
+   "name": "Bananas",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "oranges",
+   "series": "AP:711311",
+   "name": "Oranges",
+   "desc": "navel",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "lemons",
+   "series": "AP:711412",
+   "name": "Lemons",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "strawberries",
+   "series": "AP:711415",
+   "name": "Strawberries",
+   "desc": "",
+   "unit": "12 oz",
+   "cat": "Produce"
+  },
+  {
+   "id": "potatoes",
+   "series": "AP:712112",
+   "name": "Potatoes",
+   "desc": "white",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "tomatoes",
+   "series": "AP:712311",
+   "name": "Tomatoes",
+   "desc": "field grown",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "iceberg",
+   "series": "AP:712211",
+   "name": "Iceberg lettuce",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "romaine",
+   "series": "AP:FL2101",
+   "name": "Romaine lettuce",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "gas",
+   "series": "AP:74714",
+   "name": "Gasoline",
+   "desc": "regular unleaded",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "diesel",
+   "series": "AP:74717",
+   "name": "Diesel",
+   "desc": "automotive",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "power",
+   "series": "AP:72610",
+   "name": "Electricity",
+   "desc": "residential",
+   "unit": "kWh",
+   "cat": "Energy"
+  },
+  {
+   "id": "natgas",
+   "series": "AP:72620",
+   "name": "Natural gas",
+   "desc": "piped utility",
+   "unit": "therm",
+   "cat": "Energy"
+  },
+  {
+   "id": "fueloil",
+   "series": "AP:72511",
+   "name": "Heating oil",
+   "desc": "#2 fuel oil",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "lowfat",
+   "series": "AP:FJ1101",
+   "name": "Low-fat milk",
+   "desc": "reduced fat or skim",
+   "unit": "gallon",
+   "cat": "Dairy & eggs"
+  },
+  {
+   "id": "chuckgr",
+   "series": "AP:703111",
+   "name": "Ground chuck",
+   "desc": "100% beef",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "leanbeef",
+   "series": "AP:703113",
+   "name": "Lean ground beef",
+   "desc": "lean and extra lean",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "roundroast",
+   "series": "AP:703311",
+   "name": "Round roast",
+   "desc": "USDA Choice, boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "stew",
+   "series": "AP:703432",
+   "name": "Beef stew meat",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat",
+   "note": "The 2019 average uses 11 months; BLS has no January 2019 price.",
+   "min2019": 11
+  },
+  {
+   "id": "roundsteak",
+   "series": "AP:703511",
+   "name": "Round steak",
+   "desc": "USDA Choice, boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "steaks",
+   "series": "AP:FC3101",
+   "name": "Beef steaks",
+   "desc": "all uncooked cuts",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "roasts",
+   "series": "AP:FC2101",
+   "name": "Beef roasts",
+   "desc": "all uncooked cuts",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "ham",
+   "series": "AP:704312",
+   "name": "Ham",
+   "desc": "boneless",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "bonechop",
+   "series": "AP:704211",
+   "name": "Bone-in pork chops",
+   "desc": "center cut",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "legs",
+   "series": "AP:706212",
+   "name": "Chicken legs",
+   "desc": "bone-in",
+   "unit": "lb",
+   "cat": "Meat"
+  },
+  {
+   "id": "wheat",
+   "series": "AP:702212",
+   "name": "Wheat bread",
+   "desc": "whole wheat, pan",
+   "unit": "lb",
+   "cat": "Pantry"
+  },
+  {
+   "id": "oj",
+   "series": "AP:713111",
+   "name": "Orange juice",
+   "desc": "frozen concentrate",
+   "unit": "16 oz",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "cans",
+   "series": "AP:FN1102",
+   "name": "Canned soda",
+   "desc": "12-pack, per can",
+   "unit": "12 oz can",
+   "cat": "Snacks & drinks"
+  },
+  {
+   "id": "grapefruit",
+   "series": "AP:711411",
+   "name": "Grapefruit",
+   "desc": "",
+   "unit": "lb",
+   "cat": "Produce"
+  },
+  {
+   "id": "midgrade",
+   "series": "AP:74715",
+   "name": "Midgrade gas",
+   "desc": "unleaded",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "premium",
+   "series": "AP:74716",
+   "name": "Premium gas",
+   "desc": "unleaded",
+   "unit": "gallon",
+   "cat": "Energy"
+  },
+  {
+   "id": "rent",
+   "series": "CU:SEHA",
+   "name": "Rent",
+   "desc": "primary residence",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "carins",
+   "series": "CU:SETE",
+   "name": "Car insurance",
+   "desc": "motor vehicle insurance",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "dining",
+   "series": "CU:SEFV",
+   "name": "Restaurant meals",
+   "desc": "food away from home",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "doctor",
+   "series": "CU:SEMC01",
+   "name": "Doctor visits",
+   "desc": "physicians' services",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "dental",
+   "series": "CU:SEMC02",
+   "name": "Dental care",
+   "desc": "dental services",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "hospital",
+   "series": "CU:SEMD01",
+   "name": "Hospital care",
+   "desc": "hospital services",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "airfare",
+   "series": "CU:SETG01",
+   "name": "Airfare",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "haircut",
+   "series": "CU:SEGC",
+   "name": "Haircuts and salons",
+   "desc": "personal care services",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "daycare",
+   "series": "CU:SEEB03",
+   "name": "Day care and preschool",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "tuition",
+   "series": "CU:SEEB01",
+   "name": "College tuition",
+   "desc": "tuition and fees",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "cell",
+   "series": "CU:SEED03",
+   "name": "Cell phone service",
+   "desc": "wireless",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "internet",
+   "series": "CU:SEEE03",
+   "name": "Internet service",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "carrepair",
+   "series": "CU:SETD",
+   "name": "Car repair",
+   "desc": "maintenance and repair",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "water",
+   "series": "CU:SEHG",
+   "name": "Water, sewer and trash",
+   "desc": "",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "tv",
+   "series": "CU:SERA02",
+   "name": "Cable and streaming TV",
+   "desc": "cable, satellite, live streaming",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "vet",
+   "series": "CU:SERB02",
+   "name": "Vet and pet care",
+   "desc": "pet services incl. veterinary",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "hotel",
+   "series": "CU:SEHB",
+   "name": "Hotels",
+   "desc": "lodging away from home",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "newcar",
+   "series": "CU:SETA01",
+   "name": "New cars",
+   "desc": "new vehicles",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "usedcar",
+   "series": "CU:SETA02",
+   "name": "Used cars",
+   "desc": "used cars and trucks",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  },
+  {
+   "id": "gym",
+   "series": "CU:SERF01",
+   "name": "Gyms and clubs",
+   "desc": "memberships and sports fees",
+   "unit": "$100 spent in 2019",
+   "cat": "Services",
+   "kind": "index"
+  }
+ ]
+}

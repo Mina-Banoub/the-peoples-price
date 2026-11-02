@@ -1,0 +1,70 @@
+<nav class="topbar" aria-label="Main">
+  <div class="topin">
+    <a class="mark" href="#check"><span class="dot"></span>The People's Price</a>
+    <div class="tabs"><a href="#check" id="tab-check">Check a price</a><a href="#all" id="tab-all">All prices</a></div>
+  </div>
+</nav>
+<div class="wrap" id="app">
+<main id="view-check">
+  <header class="hero">
+    <div class="brand"><span class="stamp" id="stamp">Prices through Sep 2026</span></div>
+    <h1 id="hero-h"><span class="fit">The People's <span class="hl">Price</span></span></h1>
+    <p class="lede">What everyday items would cost today if prices had risen <b>only as fast as a typical paycheck</b> since 2019.</p>
+    <form id="q" class="search" autocomplete="off" novalidate>
+      <label for="q-item" class="f-item">What are you buying?
+        <input id="q-item" list="q-items" placeholder="Try eggs, gasoline, coffee…" aria-describedby="q-hint">
+        <datalist id="q-items"></datalist>
+      </label>
+      <label for="state" class="f-state">State <span class="opt">optional</span>
+        <select id="state"></select>
+      </label>
+      <label for="q-price" class="f-price">Price you paid <span class="opt">optional</span>
+        <span class="money"><input id="q-price" inputmode="decimal" placeholder="0.00"></span>
+      </label>
+      <button type="submit" class="go">Check the price</button>
+    </form>
+    <div class="quick" id="quick"><span id="q-hint">Popular:</span></div>
+  </header>
+  <section class="answer" id="answer" aria-live="polite" hidden></section>
+  <div class="facts" id="facts" hidden></div>
+  <details class="method" id="method">
+    <summary><span>How it's calculated</span></summary>
+    <div class="m-body">
+      <div class="formula">People's Price = 2019 average price × (typical weekly pay now ÷ typical weekly pay in 2019)</div>
+      <h3>What each bar means</h3>
+      <dl class="defs">
+        <div><dt><i class="sw2 s19"></i>2019 average</dt><dd>The item's average price across all 12 months of 2019, before the pandemic. Everything else starts from this number.</dd></div>
+        <div><dt><i class="sw2 s2"></i>At +2% a year</dt><dd>The 2019 price grown 2% a year, the Federal Reserve's inflation target. This is the strictest benchmark.</dd></div>
+        <div><dt><i class="sw2 spp"></i>People's Price</dt><dd>The 2019 price grown at the same pace as a typical paycheck. <span id="m-wage"></span></dd></div>
+        <div><dt><i class="sw2 snow"></i><i class="sw2 snow2"></i>Average now</dt><dd>The latest average price from the Bureau of Labor Statistics. It's red when it's above the People's Price and green when it's below.</dd></div>
+        <div><dt><i class="sw2 syou"></i>You paid</dt><dd>The price you entered, if you entered one.</dd></div>
+      </dl>
+      <h3>Services</h3>
+      <p>Services like rent, car insurance and doctor visits don't have one national price, so they're shown <b>per $100 spent in 2019</b>. If you spent $100 on a service in 2019, the People's Price is what that same service would cost now if it had risen with paychecks, and "Average now" is what it actually costs, based on the BLS consumer price index for that service. You can scale it to your own bill: if your rent was $1,500 in 2019, multiply each number by 15.</p>
+      <h3>Where the numbers come from</h3>
+      <p>Prices are Bureau of Labor Statistics average retail prices for urban areas<span id="m-asof"></span>. Pay is the median weekly earnings of full-time workers. If you pick a state, we use prices for its region (Northeast, Midwest, South or West). When BLS hasn't published an item for your region in the last six months, we use national prices and label the item "US data."</p>
+      <p><b>Work time</b> is how many minutes someone earning the median wage works to buy the item, then and now, based on a 40-hour week. Items marked * have a shorter 2019 average: coffee covers October to December only, because BLS started its current coffee series in October 2019, and beef stew meat covers 11 months.</p>
+      <h3>Keep in mind</h3>
+      <p>A price above the People's Price isn't proof of overcharging. Some items cost more for real reasons, like the bird flu egg shortage, poor coffee harvests or a smaller cattle herd. The People's Price is a benchmark for affordability, not a judgment on any store.</p>
+      <p class="m-foot">Coming next: pay growth by state, more precise local prices, and prices shared by shoppers. Sources: <a href="https://www.bls.gov/cpi/factsheets/average-prices.htm" target="_blank" rel="noopener">BLS Average Price Data</a> and <a href="https://www.bls.gov/news.release/wkyeng.toc.htm" target="_blank" rel="noopener">BLS Usual Weekly Earnings</a>.</p>
+    </div>
+  </details>
+  <section class="feat home-feat" hidden aria-labelledby="ab-h"><div class="sh"><h2 id="ab-h">Furthest above the People's Price</h2><p>The 5 items that have outrun paychecks the most.</p></div><div class="grid" id="grid-above"></div></section>
+    <section class="feat home-feat" hidden aria-labelledby="be-h"><div class="sh"><h2 id="be-h">Furthest below the People's Price</h2><p>The 5 items that are cheaper than paychecks would suggest.</p></div><div class="grid" id="grid-below"></div></section>
+
+  <a class="browse" href="#all">Browse all <span id="more-n"></span> prices <span aria-hidden="true">→</span></a>
+</main>
+<main id="view-all" class="full" hidden>
+  <header class="allhead">
+    <div><h1 class="h-all">All prices</h1><p class="lede">Every item we track, compared with its People's Price.</p></div>
+    <label for="state2">State<select id="state2"></select></label>
+  </header>
+  <div class="facts" id="facts2"></div>
+    <section class="glance" aria-labelledby="gl-h"><div class="sh"><h2 id="gl-h">Every item at a glance</h2><p>How far each item sits above or below its People's Price. Click an item to check it.</p></div>
+      <div class="gl-key"><span><i class="sw under"></i>Cheaper than paychecks suggest</span><span><i class="sw over"></i>Outran paychecks</span></div>
+      <div class="gl" id="glance"></div></section>
+    <section aria-labelledby="all-h" class="allsec"><div class="sh sh-row"><div><h2 id="all-h">Every item</h2><p id="all-sub">Click a column heading to sort.</p></div>
+      <label for="cat">Category<select id="cat"><option value="">All categories</option></select></label></div>
+      <div class="tbox" id="tbox"><table class="pt" id="pt"></table></div><div class="fogbtn" id="fogbtn" hidden><button type="button" class="more" id="showall">Show even more</button></div></section>
+</main>
+</div>

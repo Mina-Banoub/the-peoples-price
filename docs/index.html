@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="What everyday items would cost today if prices had risen only as fast as a typical paycheck since 2019.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The People's Price</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500;75..100,700;75..100,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shelf-tag cards in a responsive grid under a single ruled header; receipt-style mono for every price */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#0E1621; --muted:#5A6573; --rule:#D5DBE2;
+  --tag:#FFD23F; --tag-ink:#1A1400; --over:#C2362B; --over-soft:#FBE3E0; --under:#1E7A4B; --under-soft:#DDF2E6; --link:#1F55A8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Public Sans",system-ui,-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1117; --paper:#161C24; --ink:#E8ECF1; --muted:#9AA5B3; --rule:#2B3440;
+  --tag:#F2C531; --tag-ink:#1A1400; --over:#F2776B; --over-soft:#3A1E1C; --under:#5BCB8E; --under-soft:#173226; --link:#8DB4F0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1117; --paper:#161C24; --ink:#E8ECF1; --muted:#9AA5B3; --rule:#2B3440;
+  --tag:#F2C531; --tag-ink:#1A1400; --over:#F2776B; --over-soft:#3A1E1C; --under:#5BCB8E; --under-soft:#173226; --link:#8DB4F0; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+.wrap>*{min-width:0}
+header{display:grid;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand .stamp{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;font-size:12px;background:var(--tag);color:var(--tag-ink);padding:3px 8px;border-radius:3px}
+h1{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(38px,8vw,72px);line-height:.95;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{max-width:62ch;margin:0;font-size:17px;color:var(--ink)}
+.lede b{font-weight:600}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end}
+label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:grid;gap:4px}
+select,input{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:9px 10px;min-width:0}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.fact{background:var(--paper);padding:12px 14px;display:grid;gap:2px}
+.fact b{font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.fact span{font-size:12.5px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.sh{display:grid;gap:2px;margin-bottom:12px}
+.sh p{margin:0;color:var(--muted);font-size:14px}
+.sh-row{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.feat h2{display:flex;align-items:center;gap:10px}
+.tbox{overflow-x:auto;background:var(--paper);border:1px solid var(--rule);border-radius:8px}
+.pt{width:100%;min-width:720px;border-collapse:collapse;font-size:14px}
+.pt th{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:right;padding:10px 12px;border-bottom:2px solid var(--ink);white-space:nowrap;vertical-align:bottom}
+.pt th:first-child,.pt td:first-child{text-align:left}
+.pt th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+.pt th button:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.pt th[aria-sort] button{color:var(--ink)}
+.pt td{padding:9px 12px;border-bottom:1px solid var(--rule);text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pt tr:last-child td{border-bottom:none}
+.pt td.nm{font-family:var(--body);white-space:normal;min-width:190px}
+.pt td.nm b{font-weight:600}
+.pt td.nm span{display:block;font-size:12px;color:var(--muted)}
+.pt td.nm i{font-style:normal}
+.pt td.ppc{font-weight:600;background:color-mix(in srgb,var(--tag) 22%,transparent)}
+.pt .dt{display:block;font-family:var(--body);font-size:11.5px;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--mono);font-weight:600;font-size:13px;padding:2px 8px;border-radius:999px}
+.chip.over{background:var(--over-soft);color:var(--over)}
+.chip.under{background:var(--under-soft);color:var(--under)}
+.chip.none{color:var(--muted);border:1px solid var(--rule)}
+.tag{min-width:0;background:var(--paper);border:1px solid var(--rule);border-radius:8px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.tag .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:12px 12px 0;white-space:nowrap}
+.tag .cat{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.tag .where{flex:none;font-size:11px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis}
+.tag h3{margin-left:12px!important;margin-right:12px!important;font-family:var(--display);font-weight:700;font-stretch:80%;font-size:19px;line-height:1.2;margin:3px 14px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag .sub{font-size:12px;color:var(--muted);margin:1px 12px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag .unit{font-weight:500;font-size:14px;color:var(--muted);font-family:var(--body)}
+.pp{margin:10px 12px 10px;background:var(--tag);color:var(--tag-ink);border-radius:5px;padding:7px 12px 8px;display:grid;gap:1px}
+.pp small{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;font-size:11px;white-space:nowrap}
+.pp b{font-family:var(--mono);font-weight:600;font-size:26px;font-variant-numeric:tabular-nums;line-height:1}
+.rows{display:grid;gap:3px;padding:0 12px 8px;font-size:13px}
+.row{white-space:nowrap}
+.row{display:flex;justify-content:space-between;gap:10px}
+.row span{color:var(--muted)}
+.row b{font-family:var(--mono);font-weight:400;font-variant-numeric:tabular-nums}
+.verdict{padding:9px 12px;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--rule)}
+.verdict.over{background:var(--over-soft);color:var(--over)}
+.verdict.under{background:var(--under-soft);color:var(--under)}
+.verdict.none{color:var(--muted);font-weight:500}
+.verdict b{font-family:var(--mono)}
+.mins{font-size:12px;color:var(--muted);padding:0 12px 10px;white-space:nowrap}
+section h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:28px;margin:0 0 4px}
+.check{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:16px;display:grid;gap:14px}
+.check form{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.check .money{position:relative}
+.check .money input{padding-left:22px;width:120px}
+.check .money::before{content:"$";position:absolute;left:10px;bottom:10px;color:var(--muted);font-size:15px}
+button{font:inherit;font-weight:600;font-size:15px;border-radius:6px;padding:9px 16px;background:var(--ink);color:var(--bg);border:1px solid var(--ink);cursor:pointer}
+.result{font-size:16px;min-height:1.5em}
+.result b{font-family:var(--mono)}
+.result.over b{color:var(--over)} .result.under b{color:var(--under)}
+.method{display:grid;gap:8px;font-size:14px;color:var(--muted);max-width:75ch}
+.method p{margin:0}
+.method a{color:var(--link)}
+.method h2{color:var(--ink)}
+.formula{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;color:var(--ink);overflow-x:auto}
+.hero{display:grid;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.hero h1{font-size:clamp(32px,10.4vw,84px);line-height:1;white-space:nowrap;width:100%}
+.hero h1 .fit{display:inline-block}
+.hero h1 .hl{background:var(--tag);color:var(--tag-ink);padding:0 .12em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero .lede{font-size:clamp(15px,1.6vw,17px);max-width:none;width:100%}
+.search{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.2fr) minmax(0,1fr) auto;gap:12px;align-items:end;background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:14px;box-shadow:6px 6px 0 var(--tag)}
+[hidden]{display:none!important}
+.search label{font-size:12px;display:block}
+.search label>input,.search label>select,.search label>.money{margin-top:6px}
+.search .opt{margin-left:4px}
+.search .opt{font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted);opacity:.8}
+.search input,.search select{width:100%;box-sizing:border-box;font-size:16px;padding:11px 12px}
+.search .money{display:block}
+.search .money input{width:100%;padding-left:24px}
+.search .money::before{bottom:12px;left:11px}
+.go{font-size:16px;padding:12px 18px;white-space:nowrap;background:var(--ink);color:var(--bg)}
+.quick{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.qchip{font:inherit;font-size:13px;font-weight:500;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:5px 12px;cursor:pointer}
+.qchip:hover{border-color:var(--ink)}
+.answer{display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);gap:28px;align-items:center}
+.answer .miss{grid-column:1/-1;margin:0;font-size:16px;line-height:2}
+.ans-text{display:grid;gap:10px;min-width:0}
+.ans-text h2{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(26px,4vw,40px);line-height:1.05;margin:0;text-wrap:balance}
+.ans-text h2 em{font-style:normal}
+.ans-text h2 em.over{color:var(--over)} .ans-text h2 em.under{color:var(--under)}
+.ans-text p{margin:0;font-size:16px;max-width:60ch}
+.ans-text b{font-family:var(--mono);font-weight:600}
+.ans-text .you{font-size:17px;padding:10px 12px;border-radius:6px;background:var(--paper);border:1px solid var(--rule)}
+.ans-text .you.over{background:var(--over-soft);border-color:transparent} .ans-text .you.under{background:var(--under-soft);border-color:transparent}
+.ans-text .also{font-size:13px;color:var(--muted);line-height:2}
+.more-wrap{display:flex;justify-content:center}
+.more{background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:11px 22px;font-size:15px}
+.more:hover{background:var(--ink);color:var(--bg)}
+.full{display:grid;gap:28px}
+.full>*{min-width:0}
+@media (max-width:760px){.search{grid-template-columns:1fr 1fr}.search .f-item{grid-column:1/-1}.go{grid-column:1/-1}.answer{grid-template-columns:1fr}.ans-card{max-width:320px}}
+.facts{margin-top:-6px}
+.ladder{display:grid;gap:10px;margin-top:4px;max-width:560px}
+.ladder .lr{display:grid;grid-template-columns:124px minmax(0,1fr) 70px;gap:12px;align-items:center;font-size:14px}
+.ladder .lr span{color:var(--muted);white-space:nowrap}
+.ladder .lr b{font-family:var(--mono);font-weight:600;text-align:right;font-size:15px}
+.ladder .tr{height:24px;background:var(--rule);border-radius:3px;overflow:hidden}
+.ladder .tr i{display:block;height:100%;border-radius:3px}
+.ladder .b19 i{background:var(--muted);opacity:.55}
+.ladder .b2 i{background:var(--muted)}
+.ladder .bpp i{background:var(--tag)}
+.ladder .bnow.over i{background:var(--over)} .ladder .bnow.under i{background:var(--under)} .ladder .bnow.none i{background:var(--ink)}
+.ladder .byou i{background:var(--link)}
+.ladder .lr.bpp span{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:no-preference){.ladder .tr i{animation:grow .6s ease-out both}@keyframes grow{from{transform:scaleX(.02);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}}
+.glance{min-width:0}
+.gl-key{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.gl-key .sw{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sw.over{background:var(--over)} .sw.under{background:var(--under)}
+.gl{display:grid;gap:3px;background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.gl button{all:unset;cursor:pointer;display:grid;grid-template-columns:150px minmax(0,1fr) 52px;gap:10px;align-items:center;font-size:13px;padding:2px 4px;border-radius:4px}
+.gl button:hover,.gl button:focus-visible{background:var(--bg)}
+.gl button:focus-visible{outline:2px solid var(--link)}
+.gl .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gl .tk{position:relative;height:12px}
+.gl .tk::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px solid var(--ink);opacity:.5}
+.gl .tk i{position:absolute;top:0;height:100%;border-radius:2px}
+.gl .tk i.over{left:50%;background:var(--over)} .gl .tk i.under{right:50%;background:var(--under)}
+.gl .v{font-family:var(--mono);font-size:12px;text-align:right}
+.gl .v.over{color:var(--over)} .gl .v.under{color:var(--under)}
+.gl .ax{display:grid;grid-template-columns:150px minmax(0,1fr) 52px;gap:10px;font-family:var(--mono);font-size:11px;color:var(--muted);padding:0 4px}
+.gl .ax div{display:flex;justify-content:space-between}
+.tbox{position:relative}
+.tbox.fog{max-height:calc(10 * 51px + 100px);overflow:hidden}
+.tbox.fog::after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(to bottom,transparent,var(--paper) 85%);pointer-events:none}
+.fogbtn{display:flex;justify-content:center;margin-top:-26px;position:relative;z-index:1}
+.fogbtn .more{background:var(--paper)}
+.fogbtn.open{margin-top:14px}
+.ico{width:15px;height:15px;vertical-align:-3px;margin-right:5px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tag .cat{display:inline-flex;align-items:center}
+@media (max-width:560px){.gl button,.gl .ax{grid-template-columns:96px minmax(0,1fr) 44px;gap:6px}.ladder .lr{grid-template-columns:96px minmax(0,1fr) 58px}}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--rule);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.topin{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;height:56px}
+.mark{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:19px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.mark .dot{width:14px;height:14px;background:var(--tag);border-radius:3px;transform:rotate(45deg)}
+.tabs{display:flex;gap:4px}
+.tabs a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.tabs a:focus-visible,.mark:focus-visible,.browse:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+main{display:grid;gap:28px;min-width:0}
+main>*{min-width:0}
+details.method{max-width:none;display:block;background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:0}
+details.method summary{list-style:none;cursor:pointer;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-stretch:80%;font-size:22px;color:var(--ink)}
+details.method summary::-webkit-details-marker{display:none}
+details.method summary::after{content:"+";font-family:var(--mono);font-weight:400;font-size:24px;line-height:1;color:var(--muted)}
+details.method[open] summary::after{content:"−"}
+details.method summary:focus-visible{outline:2px solid var(--link);outline-offset:-2px;border-radius:8px}
+
+.browse{justify-self:start;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--tag);padding-bottom:2px;font-size:16px}
+.allhead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:16px}
+.h-all{font-size:clamp(40px,8vw,64px)}
+.allhead .lede{margin-top:6px}
+@media (max-width:560px){.mark{font-size:0;gap:0}.mark .dot{width:16px;height:16px}.tabs a{font-size:13px;padding:7px 10px}}
+.m-body{display:grid;gap:14px;padding:4px 22px 22px;font-size:15px;line-height:1.6;color:var(--ink)}
+.m-body p{margin:0}
+.m-body h3{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:17px;margin:8px 0 0}
+.m-body .formula{font-size:14px;padding:12px 14px}
+.m-body .m-foot{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px}
+.defs{margin:0;display:grid;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.defs>div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;padding:11px 14px;border-top:1px solid var(--rule)}
+.defs>div:first-child{border-top:none}
+.defs dt{font-weight:600;display:flex;align-items:center;gap:8px}
+.defs dd{margin:0;color:var(--ink)}
+.sw2{display:inline-block;width:22px;height:12px;border-radius:3px;flex:none}
+.sw2.s19{background:var(--muted);opacity:.55} .sw2.s2{background:var(--muted)} .sw2.spp{background:var(--tag)}
+.sw2.snow{background:var(--over);width:11px;border-radius:3px 0 0 3px} .sw2.snow2{background:var(--under);width:11px;border-radius:0 3px 3px 0;margin-left:-8px}
+.sw2.syou{background:var(--link)}
+@media (max-width:600px){.defs>div{grid-template-columns:1fr;gap:4px}.m-body{padding:4px 16px 18px}}
+</style>
+
+</head>
+<body>
+<nav class="topbar" aria-label="Main">
+  <div class="topin">
+    <a class="mark" href="#check"><span class="dot"></span>The People's Price</a>
+    <div class="tabs"><a href="#check" id="tab-check">Check a price</a><a href="#all" id="tab-all">All prices</a></div>
+  </div>
+</nav>
+<div class="wrap" id="app">
+<main id="view-check">
+  <header class="hero">
+    <div class="brand"><span class="stamp" id="stamp">Prices through Sep 2026</span></div>
+    <h1 id="hero-h"><span class="fit">The People's <span class="hl">Price</span></span></h1>
+    <p class="lede">What everyday items would cost today if prices had risen <b>only as fast as a typical paycheck</b> since 2019.</p>
+    <form id="q" class="search" autocomplete="off" novalidate>
+      <label for="q-item" class="f-item">What are you buying?
+        <input id="q-item" list="q-items" placeholder="Try eggs, gasoline, coffee…" aria-describedby="q-hint">
+        <datalist id="q-items"></datalist>
+      </label>
+      <label for="state" class="f-state">State <span class="opt">optional</span>
+        <select id="state"></select>
+      </label>
+      <label for="q-price" class="f-price">Price you paid <span class="opt">optional</span>
+        <span class="money"><input id="q-price" inputmode="decimal" placeholder="0.00"></span>
+      </label>
+      <button type="submit" class="go">Check the price</button>
+    </form>
+    <div class="quick" id="quick"><span id="q-hint">Popular:</span></div>
+  </header>
+  <section class="answer" id="answer" aria-live="polite" hidden></section>
+  <div class="facts" id="facts" hidden></div>
+  <details class="method" id="method">
+    <summary><span>How it's calculated</span></summary>
+    <div class="m-body">
+      <div class="formula">People's Price = 2019 average price × (typical weekly pay now ÷ typical weekly pay in 2019)</div>
+      <h3>What each bar means</h3>
+      <dl class="defs">
+        <div><dt><i class="sw2 s19"></i>2019 average</dt><dd>The item's average price across all 12 months of 2019, before the pandemic. Everything else starts from this number.</dd></div>
+        <div><dt><i class="sw2 s2"></i>At +2% a year</dt><dd>The 2019 price grown 2% a year, the Federal Reserve's inflation target. This is the strictest benchmark.</dd></div>
+        <div><dt><i class="sw2 spp"></i>People's Price</dt><dd>The 2019 price grown at the same pace as a typical paycheck. <span id="m-wage"></span></dd></div>
+        <div><dt><i class="sw2 snow"></i><i class="sw2 snow2"></i>Average now</dt><dd>The latest average price from the Bureau of Labor Statistics. It's red when it's above the People's Price and green when it's below.</dd></div>
+        <div><dt><i class="sw2 syou"></i>You paid</dt><dd>The price you entered, if you entered one.</dd></div>
+      </dl>
+      <h3>Services</h3>
+      <p>Services like rent, car insurance and doctor visits don't have one national price, so they're shown <b>per $100 spent in 2019</b>. If you spent $100 on a service in 2019, the People's Price is what that same service would cost now if it had risen with paychecks, and "Average now" is what it actually costs, based on the BLS consumer price index for that service. You can scale it to your own bill: if your rent was $1,500 in 2019, multiply each number by 15.</p>
+      <h3>Where the numbers come from</h3>
+      <p>Prices are Bureau of Labor Statistics average retail prices for urban areas<span id="m-asof"></span>. Pay is the median weekly earnings of full-time workers. If you pick a state, we use prices for its region (Northeast, Midwest, South or West). When BLS hasn't published an item for your region in the last six months, we use national prices and label the item "US data."</p>
+      <p><b>Work time</b> is how many minutes someone earning the median wage works to buy the item, then and now, based on a 40-hour week. Items marked * have a shorter 2019 average: coffee covers October to December only, because BLS started its current coffee series in October 2019, and beef stew meat covers 11 months.</p>
+      <h3>Keep in mind</h3>
+      <p>A price above the People's Price isn't proof of overcharging. Some items cost more for real reasons, like the bird flu egg shortage, poor coffee harvests or a smaller cattle herd. The People's Price is a benchmark for affordability, not a judgment on any store.</p>
+      <p class="m-foot">Coming next: pay growth by state, more precise local prices, and prices shared by shoppers. Sources: <a href="https://www.bls.gov/cpi/factsheets/average-prices.htm" target="_blank" rel="noopener">BLS Average Price Data</a> and <a href="https://www.bls.gov/news.release/wkyeng.toc.htm" target="_blank" rel="noopener">BLS Usual Weekly Earnings</a>.</p>
+    </div>
+  </details>
+  <section class="feat home-feat" hidden aria-labelledby="ab-h"><div class="sh"><h2 id="ab-h">Furthest above the People's Price</h2><p>The 5 items that have outrun paychecks the most.</p></div><div class="grid" id="grid-above"></div></section>
+    <section class="feat home-feat" hidden aria-labelledby="be-h"><div class="sh"><h2 id="be-h">Furthest below the People's Price</h2><p>The 5 items that are cheaper than paychecks would suggest.</p></div><div class="grid" id="grid-below"></div></section>
+
+  <a class="browse" href="#all">Browse all <span id="more-n"></span> prices <span aria-hidden="true">→</span></a>
+</main>
+<main id="view-all" class="full" hidden>
+  <header class="allhead">
+    <div><h1 class="h-all">All prices</h1><p class="lede">Every item we track, compared with its People's Price.</p></div>
+    <label for="state2">State<select id="state2"></select></label>
+  </header>
+  <div class="facts" id="facts2"></div>
+    <section class="glance" aria-labelledby="gl-h"><div class="sh"><h2 id="gl-h">Every item at a glance</h2><p>How far each item sits above or below its People's Price. Click an item to check it.</p></div>
+      <div class="gl-key"><span><i class="sw under"></i>Cheaper than paychecks suggest</span><span><i class="sw over"></i>Outran paychecks</span></div>
+      <div class="gl" id="glance"></div></section>
+    <section aria-labelledby="all-h" class="allsec"><div class="sh sh-row"><div><h2 id="all-h">Every item</h2><p id="all-sub">Click a column heading to sort.</p></div>
+      <label for="cat">Category<select id="cat"><option value="">All categories</option></select></label></div>
+      <div class="tbox" id="tbox"><table class="pt" id="pt"></table></div><div class="fogbtn" id="fogbtn" hidden><button type="button" class="more" id="showall">Show even more</button></div></section>
+</main>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('pp-data');
+  if(el){start(JSON.parse(el.textContent));return}
+  fetch('data.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(start).catch(function(){
+    var a=document.getElementById('answer');a.hidden=false;a.innerHTML='<p class="miss">Prices couldn’t load. Refresh the page to try again.</p>'});
+})();
+function start(D){
+  var WF=D.wageNow/D.wage19, P2=Math.pow(1.02,(D.monthsSinceBase||86)/12);
+  var MIN19=D.wage19/40/60, MINNOW=D.wageNow/40/60;
+  var REG={'0100':'Northeast','0200':'Midwest','0300':'South','0400':'West'};
+  var ST=[["","United States (national)"],["AL","0300"],["AK","0400"],["AZ","0400"],["AR","0300"],["CA","0400"],["CO","0400"],["CT","0100"],["DE","0300"],["DC","0300"],["FL","0300"],["GA","0300"],["HI","0400"],["ID","0400"],["IL","0200"],["IN","0200"],["IA","0200"],["KS","0200"],["KY","0300"],["LA","0300"],["ME","0100"],["MD","0300"],["MA","0100"],["MI","0200"],["MN","0200"],["MS","0300"],["MO","0200"],["MT","0400"],["NE","0200"],["NV","0400"],["NH","0100"],["NJ","0100"],["NM","0400"],["NY","0100"],["NC","0300"],["ND","0200"],["OH","0200"],["OK","0300"],["OR","0400"],["PA","0100"],["RI","0100"],["SC","0300"],["SD","0200"],["TN","0300"],["TX","0300"],["UT","0400"],["VT","0100"],["VA","0300"],["WA","0400"],["WV","0300"],["WI","0200"],["WY","0400"]];
+  var NAMES={AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",DC:"District of Columbia",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"};
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function mlab(s){return MON[+s.slice(5,7)-1]+' '+s.slice(0,4)}
+  function money(v){return v<1?(v*100).toFixed(1)+'¢':'$'+v.toFixed(2)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var sel=document.getElementById('state');
+  sel.innerHTML=ST.map(function(s){return '<option value="'+s[0]+'">'+(s[0]?NAMES[s[0]]:s[1])+'</option>'}).join('');
+  var saved='';try{saved=localStorage.getItem('pp-state')||''}catch(e){}
+  if(NAMES[saved])sel.value=saved;
+  function regionOf(st){for(var i=0;i<ST.length;i++)if(ST[i][0]===st)return st?ST[i][1]:'0000';return '0000'}
+  function calc(it,reg){
+    var n=it.r['0000'],r=it.r[reg],use=(r&&r.cur!=null)?r:n,from=(use===n)?'0000':reg;
+    var base=use.base,cur=use.cur,curDt=use.dt,baseFrom=from,curFrom=from;
+    var pp=base*WF;
+    return {base:base,pp:pp,p2:base*P2,cur:cur,curDt:curDt,baseFrom:baseFrom,curFrom:curFrom,gap:(cur/pp-1)*100};
+  }
+  function where(c,reg){
+    if(reg==='0000')return 'National';
+    if(c.baseFrom===reg)return REG[reg];
+    return 'US data';
+  }
+  function whereLong(c,reg){
+    if(reg==='0000')return 'National prices';
+    if(c.baseFrom===reg)return REG[reg]+' region prices';
+    return 'National prices: BLS hasn’t published this item for the '+REG[reg]+' recently';
+  }
+  var ICON={
+    'Dairy & eggs':'<path d="M12 3c-3.3 0-6 5-6 9a6 6 0 0 0 12 0c0-4-2.7-9-6-9z"/>',
+    'Meat':'<path d="M7 6c3-3 9-2 11 2 2 5-2 10-7 10-3 0-6-2-6-5 0-2 0-5 2-7z"/><circle cx="12" cy="11" r="2"/>',
+    'Pantry':'<rect x="6" y="7" width="12" height="13" rx="2"/><path d="M8 4h8v3H8z"/><path d="M6 12h12"/>',
+    'Snacks & drinks':'<path d="M7 4h10l-1.5 16h-7z"/><path d="M7.5 9h9"/>',
+    'Produce':'<path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19l8-8"/>',
+    'Energy':'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>'};
+  function icon(cat){return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">'+(ICON[cat]||'')+'</svg>'}
+  function sub(it){return (it.desc?it.desc+' · ':'')+'per '+it.unit}
+  var catSel=document.getElementById('cat');
+  var CATS=[];D.items.forEach(function(it){if(CATS.indexOf(it.cat)<0)CATS.push(it.cat)});
+  catSel.innerHTML+=CATS.map(function(c){return '<option>'+esc(c)+'</option>'}).join('');
+  var SORT={k:'gap',dir:-1};
+  var COLS=[['name','Item'],['pp','People’s Price'],['cur','Average now'],['base','2019 average'],['p2','At +2% a year'],['mnow','Work time 2019 → now'],['gap','vs. People’s Price']];
+  function chip(g){var cls=g>2?'over':(g<-2?'under':'none');return '<span class="chip '+cls+'">'+(g>=0?'+':'−')+Math.abs(g).toFixed(0)+'%</span>'}
+  function card(o,reg){
+    var it=o.it,c=o.c,cls=c.gap>2?'over':(c.gap<-2?'under':'none');
+    var verdict=cls==='over'?'<span>Above</span><b>+'+c.gap.toFixed(0)+'%</b>':cls==='under'?'<span>Below</span><b>−'+Math.abs(c.gap).toFixed(0)+'%</b>':'<span>About even</span><b>'+(c.gap>=0?'+':'−')+Math.abs(c.gap).toFixed(0)+'%</b>';
+    return '<article class="tag"><div><div class="top"><span class="cat">'+icon(it.cat)+esc(it.cat)+'</span><span class="where">'+esc(where(c,reg))+'</span></div>'+
+      '<h3 title="'+esc(it.name)+'">'+esc(it.name)+'</h3><div class="sub">'+esc(sub(it))+'</div></div>'+
+      '<div><div class="pp"><small>People’s Price</small><b>'+money(c.pp)+'</b></div>'+
+      '<div class="rows"><div class="row"><span>Now ('+mlab(c.curDt)+')</span><b>'+money(c.cur)+'</b></div>'+
+      '<div class="row"><span>'+(it.kind==='index'?'2019 spending':'2019 average')+'</span><b>'+money(c.base)+'</b></div>'+
+      '<div class="row"><span>At +2% a year</span><b>'+money(c.p2)+'</b></div></div>'+
+      '<div class="mins">Work: '+pair(c.base/MIN19,c.cur/MINNOW)+(it.note?'*':'')+'</div></div>'+
+      '<div class="verdict '+cls+'">'+verdict+'</div></article>';
+  }
+  function renderFacts(st,reg){
+    var fh=      '<div class="fact"><b>+'+((WF-1)*100).toFixed(0)+'%</b><span>Typical full-time paycheck since 2019 ($'+Math.round(D.wage19)+' → $'+D.wageNow+' a week)</span></div>'+
+      '<div class="fact"><b>+'+((P2-1)*100).toFixed(0)+'%</b><span>Fed’s 2% a year target over the same stretch</span></div>'+
+      '<div class="fact"><b>'+(reg==='0000'?'National':REG[reg])+'</b><span>'+(st?'Prices for '+esc(NAMES[st])+' use its census region':'Choose a state for regional prices')+'</span></div>';
+    document.getElementById('facts').innerHTML=fh;document.getElementById('facts2').innerHTML=fh;
+  }
+  var SHOWALL=false;
+  function render(){
+    var st=sel.value,reg=regionOf(st);
+    try{localStorage.setItem('pp-state',st)}catch(e){}
+    renderFacts(st,reg);
+    if(0)document.getElementById('facts').innerHTML=
+      '<div class="fact"><b>+'+((WF-1)*100).toFixed(0)+'%</b><span>Typical full-time paycheck since 2019 ($'+Math.round(D.wage19)+' → $'+D.wageNow+' a week)</span></div>'+
+      '<div class="fact"><b>+'+((P2-1)*100).toFixed(0)+'%</b><span>Fed’s 2% a year target over the same stretch</span></div>'+
+      '<div class="fact"><b>'+(reg==='0000'?'National':REG[reg])+'</b><span>'+(st?'Prices for '+esc(NAMES[st])+' use its census region':'Choose a state for regional prices')+'</span></div>';
+    var all=D.items.map(function(it){return {it:it,c:calc(it,reg)}}).sort(function(x,y){return y.c.gap-x.c.gap});
+    var above=all.filter(function(o){return o.c.gap>2}).slice(0,5);
+    var below=all.filter(function(o){return o.c.gap<-2}).slice(-5).reverse();
+    var featured=above.concat(below).map(function(o){return o.it.id});
+    document.getElementById('grid-above').innerHTML=above.map(function(o){return card(o,reg)}).join('');
+    document.getElementById('grid-below').innerHTML=below.map(function(o){return card(o,reg)}).join('');
+    var rest=all.filter(function(o){return !catSel.value||o.it.cat===catSel.value});
+    function val(o,k){var c=o.c;switch(k){case'name':return o.it.name;case'pp':return c.pp;case'cur':return c.cur;case'base':return c.base;case'p2':return c.p2;case'm19':return c.base/MIN19;case'mnow':return c.cur/MINNOW;case'gap':return c.gap;case'where':return where(c,reg)}}
+    rest.sort(function(x,y){var a=val(x,SORT.k),b=val(y,SORT.k);return (typeof a==='string'?a.localeCompare(b):a-b)*SORT.dir});
+    document.getElementById('all-sub').textContent=rest.length+' items · click a column heading to sort';
+    var th=COLS.map(function(col){var on=SORT.k===col[0];return '<th scope="col"'+(on?' aria-sort="'+(SORT.dir>0?'ascending':'descending')+'"':'')+'><button type="button" data-k="'+col[0]+'">'+col[1]+(on?(SORT.dir>0?' ▲':' ▼'):'')+'</button></th>'}).join('');
+    var rows=rest.map(function(o){var it=o.it,c=o.c;
+      return '<tr><td class="nm"><b>'+esc(it.name)+'</b><span>'+esc(it.cat)+' · per '+esc(it.unit)+(reg!=='0000'?' · '+esc(where(c,reg)):'')+'</span></td><td class="ppc">'+money(c.pp)+'</td><td>'+money(c.cur)+'<span class="dt">'+mlab(c.curDt)+'</span></td><td>'+money(c.base)+'</td><td>'+money(c.p2)+'</td><td>'+pair(c.base/MIN19,c.cur/MINNOW)+'</td><td>'+chip(c.gap)+'</td></tr>'}).join('');
+    var mx=Math.max.apply(null,all.map(function(o){return Math.abs(o.c.gap)}));mx=Math.ceil(mx/25)*25;
+    document.getElementById('glance').innerHTML='<div class="ax"><span></span><div><span>−'+mx+'%</span><span>0</span><span>+'+mx+'%</span></div><span></span></div>'+all.map(function(o){var g=o.c.gap,cls=g>0?'over':'under',w=Math.abs(g)/mx*50;
+      return '<button type="button" class="qchip-gl" data-q="'+esc(o.it.name)+'" title="'+esc(o.it.name)+': '+(g>=0?'+':'−')+Math.abs(g).toFixed(0)+'%"><span class="nm">'+esc(o.it.name)+'</span><span class="tk"><i class="'+cls+'" style="width:'+w.toFixed(2)+'%"></i></span><span class="v '+(Math.abs(g)>2?cls:'')+'">'+(g>=0?'+':'−')+Math.abs(g).toFixed(0)+'%</span></button>'}).join('');
+    var fog=!SHOWALL&&rest.length>10;
+    document.getElementById('tbox').classList.toggle('fog',fog);
+    document.getElementById('fogbtn').hidden=rest.length<=10;
+    document.getElementById('fogbtn').classList.toggle('open',!fog);
+    document.getElementById('showall').textContent=fog?'Show even more':'Show fewer';
+    document.getElementById('pt').innerHTML='<thead><tr>'+th+'</tr></thead><tbody>'+(rows||'<tr><td class="nm" colspan="7">No other items in this category. They’re in the top 5 lists above.</td></tr>')+'</tbody>';
+  }
+  function pair(a,b){var x=fmtMin(a),y=fmtMin(b);['min','sec','hr'].forEach(function(u){if(x.slice(-u.length)===u&&y.slice(-u.length)===u)x=x.slice(0,-u.length-1)});return x+' → '+y}
+  function fmtMin(m){return m<1?Math.round(m*60)+' sec':(m>=90?(m/60).toFixed(1)+' hr':m.toFixed(1)+' min')}
+  document.getElementById('stamp').textContent='Prices through '+mlab(D.asof);
+  var MON2=['January','February','March','April','May','June','July','August','September','October','November','December'];document.getElementById('m-asof').textContent=', through '+MON2[+D.asof.slice(5,7)-1]+' '+D.asof.slice(0,4)+(D.updated?' (updated '+D.updated+')':'');
+  document.getElementById('m-wage').textContent='Median full-time weekly pay rose from $'+Math.round(D.wage19).toLocaleString()+' in 2019 to $'+D.wageNow.toLocaleString()+' in '+D.wageQ+', up '+((WF-1)*100).toFixed(1)+'%. For now, the same national pay growth is used for every state.';
+  sel.addEventListener('change',render);catSel.addEventListener('change',function(){SHOWALL=false;render()});
+  document.getElementById('pt').addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;var k=b.getAttribute('data-k');if(SORT.k===k)SORT.dir=-SORT.dir;else{SORT.k=k;SORT.dir=(k==='name'||k==='where')?1:-1}render();var nb=document.querySelector('#pt button[data-k="'+k+'"]');if(nb)nb.focus()});
+  var ALIAS={gas:'gas',petrol:'gas',fuel:'gas',steak:'sirloin',hamburger:'beef',burger:'beef',pop:'soda',soda:'soda',coke:'soda',spaghetti:'pasta',macaroni:'pasta',noodles:'pasta',power:'power',electric:'power',lettuce:'iceberg',orange:'oranges',egg:'eggs',chip:'chips',cookie:'cookies',tomato:'tomatoes',potato:'potatoes',strawberry:'strawberries',lemon:'lemons',banana:'bananas',cheese:'cheddar',pork:'porkchop',chicken:'chicken',heating:'fueloil',oil:'fueloil'};
+  function find(q){
+    q=q.trim().toLowerCase().replace(/\s*\(.*\)$/,'');if(!q)return [];
+    var exact=D.items.filter(function(it){return it.name.toLowerCase()===q});if(exact.length)return exact;
+    var hits=D.items.filter(function(it){return (it.name+' '+(it.desc||'')+' '+it.cat).toLowerCase().indexOf(q)>=0});
+    if(!hits.length){var w=q.split(/\s+/);w.forEach(function(x){var id=ALIAS[x]||ALIAS[x.replace(/e?s$/,'')];if(id)D.items.forEach(function(it){if(it.id===id&&hits.indexOf(it)<0)hits.push(it)})})}
+    if(!hits.length){hits=D.items.filter(function(it){return q.split(/\s+/).some(function(x){return x.length>2&&it.name.toLowerCase().indexOf(x)>=0})})}
+    return hits;
+  }
+  var dl=document.getElementById('q-items');
+  dl.innerHTML=D.items.map(function(it){return '<option value="'+esc(it.name)+'">'+esc(sub(it))+'</option>'}).join('');
+  var QUICK=['eggs','gas','beef','milk','coffee','power'];
+  document.getElementById('quick').innerHTML+=QUICK.map(function(id){var it=D.items.filter(function(x){return x.id===id})[0];return '<button type="button" class="qchip" data-q="'+esc(it.name)+'">'+esc(it.name)+'</button>'}).join('');
+  var lastQ=null;
+  function answer(){
+    var box=document.getElementById('answer'),qv=document.getElementById('q-item').value,pv=String(document.getElementById('q-price').value).replace(/[$,\s]/g,'');
+    var v=pv?parseFloat(pv):null;box.hidden=false;
+    if(!qv.trim()){box.innerHTML='<p class="miss">Type an item to check, or pick one of the popular items.</p>';return}
+    var hits=find(qv);
+    if(!hits.length){box.innerHTML='<p class="miss">We don’t track “'+esc(qv.trim())+'” yet. Try one of these: '+QUICK.map(function(id){var it=D.items.filter(function(x){return x.id===id})[0];return '<button type="button" class="qchip" data-q="'+esc(it.name)+'">'+esc(it.name)+'</button>'}).join(' ')+' or open the full list below.</p>';return}
+    var it=hits[0],reg=regionOf(sel.value),c=calc(it,reg),o={it:it,c:c};
+    var g=c.gap,dir=g>2?'more':(g<-2?'less':'about the same');
+    var verb=(/s$/i.test(it.name)&&!/gas$/i.test(it.name))?' cost':' costs';var head=dir==='about the same'?esc(it.name)+verb+' about the same as the People’s Price':esc(it.name)+verb+' <em class="'+(g>0?'over':'under')+'">'+Math.abs(g).toFixed(0)+'% '+dir+'</em> than the People’s Price';
+    var place=c.baseFrom==='0000'?(reg==='0000'?'nationally':'(national figures, since BLS doesn’t publish this for the '+REG[reg]+')'):'in the '+REG[reg];
+    var lines='';
+    if(pv&&!(v>0))lines+='<p class="you">Enter the price as a number, for example 3.49.</p>';
+    else if(v>0){var y=(v/c.pp-1)*100,z=(v/c.cur-1)*100;
+      lines+='<p class="you '+(y>2?'over':(y<-2?'under':''))+'">You paid <b>'+money(v)+'</b>: <b>'+Math.abs(y).toFixed(0)+'% '+(y>=0?'above':'below')+'</b> the People’s Price and '+Math.abs(z).toFixed(0)+'% '+(z>=0?'above':'below')+' the current average.</p>'}
+    var also=hits.slice(1,5);
+    if(also.length)lines+='<p class="also">Also matching: '+also.map(function(h){return '<button type="button" class="qchip" data-q="'+esc(h.name)+'">'+esc(h.name)+'</button>'}).join(' ')+'</p>';
+    var bars=[['b19',it.kind==='index'?'2019 spending':'2019 average',c.base],['b2','At +2% a year',c.p2],['bpp','People’s Price',c.pp],['bnow '+(g>2?'over':(g<-2?'under':'none')),'Average now',c.cur]];
+    if(v>0)bars.push(['byou','You paid',v]);
+    var bm=Math.max.apply(null,bars.map(function(x){return x[2]}));
+    var ladder='<div class="ladder" role="img" aria-label="'+esc(it.name)+' prices: '+bars.map(function(x){return x[1]+' '+money(x[2])}).join(', ')+'">'+bars.map(function(x){return '<div class="lr '+x[0]+'"><span>'+x[1]+'</span><div class="tr"><i style="width:'+(x[2]/bm*100).toFixed(1)+'%"></i></div><b>'+money(x[2])+'</b></div>'}).join('')+'</div>';
+    box.innerHTML='<div class="ans-card">'+card(o,reg)+'</div><div class="ans-text"><h2>'+head+'</h2>'+ladder+lines+'</div>';
+    renderFacts(sel.value,reg);document.getElementById('facts').hidden=false;[].forEach.call(document.querySelectorAll('.home-feat'),function(s){s.hidden=false});
+    lastQ=qv;
+  }
+  document.getElementById('q').addEventListener('submit',function(e){e.preventDefault();answer()});
+  document.getElementById('app').addEventListener('click',function(e){var b=e.target.closest('.qchip,.qchip-gl');if(!b)return;document.getElementById('q-item').value=b.getAttribute('data-q');answer();if(b.classList.contains('qchip-gl')){if(location.hash==='#all')location.hash='#check';setTimeout(function(){document.getElementById('answer').scrollIntoView({behavior:'smooth',block:'start'})},30)}});
+  document.getElementById('showall').addEventListener('click',function(){SHOWALL=!SHOWALL;render();if(!SHOWALL)document.getElementById('all-h').scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('showall').focus({preventScroll:true})});
+  sel.addEventListener('change',function(){if(lastQ!==null)answer()});
+  document.getElementById('more-n').textContent=D.items.length;
+  var sel2=document.getElementById('state2');sel2.innerHTML=sel.innerHTML;sel2.value=sel.value;
+  sel2.addEventListener('change',function(){sel.value=sel2.value;render();if(lastQ!==null)answer()});
+  sel.addEventListener('change',function(){sel2.value=sel.value});
+  function route(){var all=location.hash==='#all';document.getElementById('view-all').hidden=!all;document.getElementById('view-check').hidden=all;
+    document.getElementById('tab-all').setAttribute('aria-current',all?'page':'false');document.getElementById('tab-check').setAttribute('aria-current',all?'false':'page');window.scrollTo(0,0)}
+  window.addEventListener('hashchange',route);route();
+  function fitTitle(){var h=document.getElementById('hero-h'),s=h&&h.querySelector('.fit');if(!s||!h.clientWidth)return;h.style.fontSize='';var cs=parseFloat(getComputedStyle(h).fontSize),r=h.clientWidth/s.offsetWidth;h.style.fontSize=Math.min(84,Math.max(32,Math.floor(cs*r*0.995)))+'px'}
+  fitTitle();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitle);var ft;window.addEventListener('resize',function(){clearTimeout(ft);ft=setTimeout(fitTitle,80)});window.addEventListener('hashchange',function(){setTimeout(fitTitle,0)});
+  render();
+}
+</script>
+</body>
+</html>
