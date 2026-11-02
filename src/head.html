@@ -206,4 +206,13 @@ details.method summary:focus-visible{outline:2px solid var(--link);outline-offse
 .sw2.snow{background:var(--over);width:11px;border-radius:3px 0 0 3px} .sw2.snow2{background:var(--under);width:11px;border-radius:0 3px 3px 0;margin-left:-8px}
 .sw2.syou{background:var(--link)}
 @media (max-width:600px){.defs>div{grid-template-columns:1fr;gap:4px}.m-body{padding:4px 16px 18px}}
+.navr{display:flex;align-items:center;gap:8px}
+.theme{all:unset;box-sizing:border-box;width:36px;height:36px;border-radius:999px;border:1px solid var(--rule);display:grid;place-items:center;cursor:pointer;color:var(--ink);background:var(--paper)}
+.theme:hover{border-color:var(--ink)}
+.theme:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme .i-sun{display:none}
+:root[data-theme="dark"] .theme .i-sun{display:block}
+:root[data-theme="dark"] .theme .i-moon{display:none}
+@media (max-width:560px){.navr{gap:6px}.theme{width:32px;height:32px}}
 </style>

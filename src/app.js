@@ -1,4 +1,14 @@
 (function(){
+  var root=document.documentElement,saved=null;
+  try{saved=localStorage.getItem('pp-theme')}catch(e){}
+  function setTheme(t,save){root.setAttribute('data-theme',t);var b=document.getElementById('theme');
+    if(b){var l=t==='dark'?'Switch to light mode':'Switch to dark mode';b.setAttribute('aria-label',l);b.title=l}
+    if(save){try{localStorage.setItem('pp-theme',t)}catch(e){}}}
+  setTheme(saved==='dark'?'dark':'light',false);
+  var tb=document.getElementById('theme');
+  if(tb)tb.addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark',true)});
+})();
+(function(){
   var el=document.getElementById('pp-data');
   if(el){start(JSON.parse(el.textContent));return}
   fetch('data.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(start).catch(function(){
